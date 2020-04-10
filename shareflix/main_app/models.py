@@ -16,10 +16,11 @@ class Movie(models.Model):
     title = models.CharField(max_length=100)
     how_heard = models.TextField(max_length=1000, null=True)
     where = models.CharField(max_length=100, null=True)
-    description = models.TextField(max_length=1000), null=True
+    description = models.TextField(max_length=1000, null=True)
     genre = models.CharField(max_length=100, null=True)
     watched = models.BooleanField(default=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE) # 1:M, a user can recommend many movies
+    test = models.TextField
 
     def __str__(self):
         return self.title
