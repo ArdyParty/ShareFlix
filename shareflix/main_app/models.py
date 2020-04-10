@@ -14,10 +14,10 @@ from django.utils.timezone import now
 class Movie(models.Model):
     date = models.DateTimeField(default=now)
     title = models.CharField(max_length=100)
-    how_heard = models.TextField(max_length=1000)
-    where = models.CharField(max_length=100)
-    description = models.TextField(max_length=1000)
-    genre = models.CharField(max_length=100)
+    how_heard = models.TextField(max_length=1000, null=True)
+    where = models.CharField(max_length=100, null=True)
+    description = models.TextField(max_length=1000), null=True
+    genre = models.CharField(max_length=100, null=True)
     watched = models.BooleanField(default=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE) # 1:M, a user can recommend many movies
 
@@ -26,3 +26,6 @@ class Movie(models.Model):
 
     def get_absolute_url(self):
         return reverse('detail', kwargs={'game_id': self.id})
+
+    class Meta:
+        ordering = ['-date'] # Sort from most most recent to old
