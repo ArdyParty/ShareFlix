@@ -14,13 +14,12 @@ from django.utils.timezone import now
 class Movie(models.Model):
     date = models.DateTimeField(default=now)
     title = models.CharField(max_length=100)
-    how_heard = models.TextField(max_length=1000, null=True)
-    where = models.CharField(max_length=100, null=True)
-    description = models.TextField(max_length=1000, null=True)
-    genre = models.CharField(max_length=100, null=True)
+    how_heard = models.TextField(max_length=1000, default='', blank=True)
+    where = models.CharField(max_length=100, default='', blank=True)
+    description = models.TextField(max_length=1000, default='', blank=True)
+    genre = models.CharField(max_length=100, default='', blank=True)
     watched = models.BooleanField(default=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE) # 1:M, a user can recommend many movies
-    test = models.TextField
 
     def __str__(self):
         return self.title
