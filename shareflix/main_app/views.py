@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic import ListView, CreateView, DetailView
-from .models import Movie
+from .models import Movie, User
+from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import login
@@ -16,10 +17,6 @@ def home(req):
 
 def info(req):
     return render(req, 'info.html')
-
-# def profile(req, user_id):
-#     user = User.objects.get(id=user_id)
-#     return render(req, 'profile.html')
 
 def signup(req):
     error_message = ''
@@ -47,4 +44,6 @@ class MovieList(LoginRequiredMixin, ListView):
 
 class MovieDetailView(LoginRequiredMixin, DetailView):
     model = Movie
-    
+
+class UserDetailView(LoginRequiredMixin, DetailView):
+    model = User
