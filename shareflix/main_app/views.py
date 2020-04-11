@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.views.generic import ListView
+from django.views.generic import ListView, CreateView
 from .models import Movie
 
 
@@ -15,6 +15,10 @@ def info(req):
 # def profile(req, user_id):
 #     user = User.objects.get(id=user_id)
 #     return render(req, 'profile.html')
+
+class MovieCreate(CreateView):
+    model = Movie
+    fields = ['title', 'how_heard', 'where', 'description']
 
 class MovieList(ListView):
     model = Movie

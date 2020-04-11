@@ -1,5 +1,5 @@
 from django.urls import path, include
-from main_app.views import MovieList
+from main_app.views import MovieList, MovieCreate
 from . import views
 
 urlpatterns = [ 
@@ -7,8 +7,8 @@ urlpatterns = [
     path('home/', views.home, name='home'),
     path('accounts/', include('django.contrib.auth.urls')),
     # path('home/<int:user.id>/', views.user, name='profile'),
+    path('add/', MovieCreate.as_view(), name='movie_create' ),
     path('mylist/', MovieList.as_view(), name='movie_index'),
-
 ]
 
 
