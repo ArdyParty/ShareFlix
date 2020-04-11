@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, DetailView
 from .models import Movie
 
 
@@ -23,4 +23,7 @@ class MovieCreate(CreateView):
 class MovieList(ListView):
     model = Movie
     fields = ['title']
+
+class MovieDetailView(DetailView):
+    model = Movie
     
