@@ -5,11 +5,10 @@ from . import views
 urlpatterns = [ 
     path('', views.info, name='info'),
     path('home/', views.home, name='home'),
-    path('accounts/', include('django.contrib.auth.urls')),
-    # path('home/<int:user.id>/', views.user, name='profile'),
     path('add/', MovieCreate.as_view(), name='movie_create' ),
     path('mylist/', MovieList.as_view(), name='movie_index'),
     path('movie/<int:pk>/', MovieDetailView.as_view(), name='movie_detail'),
+    path('accounts/signup/', views.signup, name='signup'),
 ]
 
 
