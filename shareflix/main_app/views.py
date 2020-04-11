@@ -7,3 +7,6 @@ def home(req):
 
 def info(req):
     return render(req, 'info.html')
+
+def user(req):
+    return render(req, 'profile.html')
