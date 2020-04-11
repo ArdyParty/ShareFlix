@@ -1,10 +1,14 @@
 from django.urls import path, include
+from main_app.views import MovieList
 from . import views
 
 urlpatterns = [ 
-    path('home', views.home, name="home"),
+    path('', views.info, name='info'),
+    path('home/', views.home, name='home'),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('<int:user.id>', views.user, name='profile'),
+    # path('home/<int:user.id>/', views.user, name='profile'),
+    path('mylist/', MovieList.as_view(), name='movie_index'),
+
 ]
 
 
