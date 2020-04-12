@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Delete Movie</h1>
+
+    <h4>Are you sure you want to delete <span class="teal-text">{{ object.title }}</span>?</h4>
+
+    <form action="" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="DELETE" class="btn">
+    </form>
+
+    <form action="{% url 'movie_detail' object.id %}" method="GET" >
+        <button type="submit">CANCEL</button>
+    </form>
+</body>
+</html>

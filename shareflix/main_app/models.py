@@ -25,7 +25,7 @@ class Movie(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('movie_detail', kwargs={'pk': self.id})
+        return reverse('movie_detail', kwargs={'': self.id})
 
     class Meta:
         ordering = ['-date'] # Sort from most most recent to old
