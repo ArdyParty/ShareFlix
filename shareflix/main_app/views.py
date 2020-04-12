@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from django.views.generic import ListView, CreateView, DeleteView, DetailView, UpdateView
-from .models import Movie, User
+from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
+from .models import Movie
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -37,6 +37,18 @@ def signup(req):
 class MovieCreate(LoginRequiredMixin, CreateView):
     model = Movie
     fields = ['title', 'how_heard', 'where', 'description']
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user  # Assign the currently logged in user(self.request.user) to the current movie instance
+        return super().form_valid(form)         # Validates and saves the instance to the database
+
+class MovieUpdate(LoginRequiredMixin, UpdateView):
+    model = Movie
+    fields = ['title', 'how_heard', 'where', 'description', 'genre', 'watched']
+
+class MovieDelete(LoginRequiredMixin, DeleteView):
+    model = Movie
+    success_url = '/mylist/'
 
 class MovieList(LoginRequiredMixin, ListView):
     model = Movie

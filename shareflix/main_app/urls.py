@@ -1,16 +1,16 @@
 from django.urls import path, include
-from main_app.views import MovieList, MovieCreate, MovieDetailView, UserDetailView, MovieUpdate
 from . import views
 
 urlpatterns = [ 
     path('', views.info, name='info'),
     path('home/', views.home, name='home'),
-    path('add/', MovieCreate.as_view(), name='movie_create' ),
-    path('mylist/', MovieList.as_view(), name='movie_index'),
-    path('movie/<int:pk>/', MovieDetailView.as_view(), name='movie_detail'),
+    path('add/', views.MovieCreate.as_view(), name='movie_create' ),
+    path('mylist/', views.MovieList.as_view(), name='movie_index'),
+    path('movie/<int:pk>/', views.MovieDetailView.as_view(), name='movie_detail'),
+    path('movie/<int:pk>/update/', views.MovieUpdate.as_view(), name='movie_update'),
+    path('movie/<int:pk>/delete/', views.MovieDelete.as_view(), name='movie_delete'),
     path('accounts/signup/', views.signup, name='signup'),
-    path('user/<int:pk>/', UserDetailView.as_view(), name='user_detail'),
-    path('movie/<int:pk>/update', MovieUpdate.as_view(), name='movie_update'),
+    path('user/<int:pk>/', views.UserDetailView.as_view(), name='user_detail'),
 ]
 
 
