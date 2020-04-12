@@ -1,5 +1,5 @@
 from django.urls import path, include
-from main_app.views import MovieList, MovieCreate, MovieDetailView, UserDetailView
+from main_app.views import MovieList, MovieCreate, MovieDetailView, UserDetailView, MovieUpdate
 from . import views
 
 urlpatterns = [ 
@@ -10,6 +10,7 @@ urlpatterns = [
     path('movie/<int:pk>/', MovieDetailView.as_view(), name='movie_detail'),
     path('accounts/signup/', views.signup, name='signup'),
     path('user/<int:pk>/', UserDetailView.as_view(), name='user_detail'),
+    path('movie/<int:pk>/update', MovieUpdate.as_view(), name='movie_update'),
 ]
 
 

@@ -6,4 +6,5 @@
     <p><strong>Why you should watch it:</strong> {{ movie.description }}</p>
     <p><strong>Genre:</strong> {{ movie.genre }}</p>
     <p><strong>Watched:</strong> {{ movie.watched }}</p>
+    <a href="{% url 'movie_update' movie.id %}">Edit</a>
 {% endblock %}
