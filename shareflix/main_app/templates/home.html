@@ -1,43 +1,5 @@
-<!DOCTYPE html>
-<html long="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link href="http://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="../static/css/home.css">
-  <script src="https://kit.fontawesome.com/c1618a70f2.js" crossorigin="anonymous"></script>
-  <title>ShareFlix</title>
-</head>
-
-<body>
-  <nav>
-    <div class="logo">
-      <h3> SHAREFLIX </h3>
-    </div>
-    <ul class="nav-links">
-      <li>
-        <a href="#"><i class="fas fa-search"></i>Search</a>
-      </li>
-      <li>
-        <a href="#"><i class="far fa-user"></i></i>Profile</a>
-      </li>
-      <li>
-        <a href="#"><i class="far fa-address-book"></i>Friends</a>
-      </li>
-      <li>
-        <a href="#"><i class="fas fa-cog"></i>Settings</a>
-      </li>
-    </ul>
-    <div class="burger">
-      <div class="line1"></div>
-      <div class="line2"></div>
-      <div class="line3"></div>
-    </div>
-  </nav>
-
-
+{% extends 'base.html' %}
+    {% block content %}
   <main>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -56,42 +18,4 @@
       proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </p>
   </main>
-
-
-  <footer class="footer">
-    <div class="inner-footer">
-      <div class="footer-details">
-        <!-- **NEED A LOGO IF POSSIBLE <img src="">  -->
-        <h1>SHAREFLIX</h1>
-      </div>
-      <div class="footer-details">
-        <h2>DEVELOPERS</h2>
-        <li><a href="https://github.com/zsiskos"><i class="fab fa-github"></i>zsiskos</a></li>
-        <li><a href="https://github.com/ArdyParty"><i class="fab fa-github"></i>ArdyParty</a></li>
-        <li><a href="https://github.com/bernallium"><i class="fab fa-github"></i>bernallium</a></li>
-      </div>
-
-      <div class="footer-details">
-        <h2>CONNECT WITH US!</h2>
-        <li><a href="https://www.linkedin.com/in/zoesiskos/"><i class="fab fa-linkedin"></i>ZOE</a></li>
-        <li><a href="https://github.com/ArdyParty"><i class="fab fa-linkedin"></i>ARDY</a></li>
-        <li><a href="https://www.linkedin.com/in/brandon-bernal/"><i class="fab fa-linkedin"></i>BRANDON</a></li>
-      </div>
-
-      <div class="footer-details">
-        <h2>CONTACT</h2>
-        <li>shareflixapp@gmail.com</li>
-        <li class="address'">220 King St W Suite 300, Tdot, ON, Canada</li>
-        <li class="phone">(647) 696-1039</li>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      &copy;SHAREFLIX&reg;
-      2020 All rights reserved
-    </div>
-  </footer>
-
-  <script src="../static/js/home.js"></script>
-</body>
-</html>
-
+{% endblock %}
