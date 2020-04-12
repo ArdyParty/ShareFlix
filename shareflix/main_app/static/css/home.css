@@ -4,22 +4,29 @@
   list-style: none;
   text-decoration: none;
   box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
+/*body {
+  min-height: 400px;
+  margin-bottom: 100px;
+  clear: both;
+}*/
+
+/*everything NAV bar and Side bar related*/
 nav {
   display: flex;
   justify-content: space-around;
   align-items: center;
   min-height: 8vh;
   background-color: #ff98a7;
-  font-family: 'Poppins', sans-serif;
 }
 
 .logo {
   color: linen;
   text-transform: uppercase;
   letter-spacing: 5px;
-  font-size: 25px;
+  font-size: 40px;
 }
 
 .nav-links {
@@ -30,9 +37,10 @@ nav {
 
 .nav-links a {
   color: linen;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   font-weight: bold;
   font-size: 15px;
+  margin: 0 10px;
 }
 
 .burger {
@@ -50,11 +58,103 @@ nav {
   transition: all 0.5s ease;
 }
 
-@media screen and (max-width:1000px) {
+
+/*everything footer related:*/
+.footer {
+  font-family: 'Poppins', sans-serif;
+  width: 100%;
+  display: block;
+  overflow: hidden;
+  padding: 10px 5px 0 5px;
+  background-color: #ff98a7;
+  color: linen;
+  position: relative;
+  bottom: -100%;
+  letter-spacing: 3px;
+}
+
+.inner-footer {
+  display: block;
+  margin: 5px 0;
+  width: 95%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  justify-content: center;
+}
+
+.footer-details {
+  width: 25%;
+  padding: 10px 1px;
+  box-sizing: border-box;
+}
+
+.inner-footer .footer-details h1 {
+  padding: 10px 0;
+  font-size: 30px;
+}
+
+.inner-footer .footer-details h2 {
+  opacity: 0.7;
+  margin: 10px 0;
+  font-size: 16px;
+  font-weight: lighter;
+}
+
+.inner-footer .footer-details li {
+  letter-spacing: 1px;
+  font-size: 16px;
+  text-align: justify;
+  line-height: 15px;
+  margin: 10px 0;
+  height: 15px;
+}
+
+.inner-footer .footer-details li a {
+  text-decoration: none;
+  outline: none;
+  color: linen;
+  transition: 0.3s;
+}
+
+.inner-footer .footer-details li i {
+  margin-right: 10px;
+}
+
+.inner-footer .footer-details li a:hover {
+  color: #ff516c;
+}
+
+.inner-footer .footer-details li .address {
+  font-size: 13px;
+}
+
+.inner-footer .footer-details li .phone {
+  font-size: 13px;
+}
+
+.footer-bottom {
+  display: center;
+  padding: 10PX;
+  background: ;
+  font-size: 12px;
+}
+
+
+/*transitions & animations:*/
+@media screen and (max-width:1100px) {
   .nav-links {
     display: flex;
     justify-content: space-around;
     width: 55%;
+  }
+  .nav-links:last-child {
+    margin-right: 1px;
+  }
+
+  .footer-details {
+    width: 50%;
   }
 }
 
@@ -64,16 +164,18 @@ nav {
   }
   .nav-links {
     position: absolute;
+    box-sizing: border-box;
     right: 0px;
-    height: 92vh;
+    height: 70%;
     top: 8vh;
     background-color: #ff98a7;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 40%;
+    width: 30%;
     transform: translateX(100%);
     transition: transform 0.4s ease-in;
+    padding-bottom: 400px;
   }
   .nav-links li {
     opacity: 0;
@@ -81,12 +183,14 @@ nav {
   .burger {
     display: block;
   }
-  .footer .inner-footer {
-    width: 90%;
-  }
-  .inner-footer .logo_container, .inner-footer .footer-details {
+  .footer-details {
     width: 100%;
-    margin-bottom: 30px;
+  }
+}
+
+@media screen and (max-width:430px) {
+  .footer-details li {
+    width: 430px;
   }
 }
 
@@ -114,54 +218,3 @@ nav {
 .open .line3 {
   transform: rotate(45deg) translate(-5px,-6px);
 }
-
-
-.footer {
-  width: 100vw;
-  display: block;
-  overflow: hidden;
-  padding: 50px 0;
-  background-color: #ff98a7;
-  color: linen;
-  position: absolute;
-  bottom: 0;
-}
-
-.inner-footer {
-  display: block;
-  margin: 0 auto;
-  width: 1100px;
-  height: 100%;
-}
-
-.inner-footer .logo-container {
-  width: 65px;
-  height: auto;
-}
-
-.inner-footer .footer-details {
-  width: calc(21% - 20px);
-  margin-right: 10px;
-  float: left;
-  height: 100%;
-  color: linen;
-}
-
-.inner-footer .footer-details:last-child {
-  margin-right: 0;
-}
-
-.inner-footer .footer-details h2{
-  font-family: 'Poppins', sans-serif;
-  font-size: 10px;
-  color: linen;
-  display: block;
-  font-weight: bold;
-  width: 100%;
-  margin-right: 20px;
-  padding-bottom: 5px;
-}
-
-
-
-
