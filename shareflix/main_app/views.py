@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from django.views.generic import ListView, CreateView, DetailView, DeleteView
+from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 from .models import Movie
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -42,10 +42,13 @@ class MovieCreate(LoginRequiredMixin, CreateView):
         form.instance.user = self.request.user  # Assign the currently logged in user(self.request.user) to the current movie instance
         return super().form_valid(form)         # Validates and saves the instance to the database
 
+class MovieUpdate(LoginRequiredMixin, UpdateView):
+    model = Movie
+    fields = ['title', 'how_heard', 'where', 'description', 'genre', 'watched']
 
 class MovieDelete(LoginRequiredMixin, DeleteView):
     model = Movie
-    success_url = '/mylist/' # TODO: Can we use route name?
+    success_url = '/mylist/'
 
 class MovieList(LoginRequiredMixin, ListView):
     model = Movie
