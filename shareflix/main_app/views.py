@@ -57,5 +57,11 @@ class MovieList(LoginRequiredMixin, ListView):
 class MovieDetailView(LoginRequiredMixin, DetailView):
     model = Movie
 
+class MovieUpdate(LoginRequiredMixin, UpdateView):
+    model = Movie
+    fields = '__all__'
+    template_url = 'movie_form.html'
+    success_url = '/mylist/'
+    
 class UserDetailView(LoginRequiredMixin, DetailView):
     model = User
