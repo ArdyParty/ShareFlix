@@ -38,9 +38,13 @@ class MovieCreate(LoginRequiredMixin, CreateView):
     model = Movie
     fields = ['title', 'how_heard', 'where', 'description']
 
+    # def form_valid(self, form):
+    #     form.instance.user = self.request.user  # Assign the currently logged in user(self.request.user) to the current movie instance
+    #     return super().form_valid(form)         # Validates and saves the instance to the database
     def form_valid(self, form):
-        form.instance.user = self.request.user  # Assign the currently logged in user(self.request.user) to the current movie instance
+        form.instance.profile_id = self.request.user.profile.id  # Assign the currently logged in user(self.request.user) to the current movie instance
         return super().form_valid(form)         # Validates and saves the instance to the database
+    
 
 class MovieUpdate(LoginRequiredMixin, UpdateView):
     model = Movie
