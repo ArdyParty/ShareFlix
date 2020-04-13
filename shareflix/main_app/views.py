@@ -34,7 +34,7 @@ def signup(req):
     context = {'form': form, 'error_message': error_message}
     return render(req, 'registration/signup.html', context)
 
-class MovieCreate(LoginRequiredMixin, CreateView):
+class WatchableCreate(LoginRequiredMixin, CreateView):
     model = Movie
     fields = ['title', 'how_heard', 'where', 'description']
 
@@ -45,25 +45,30 @@ class MovieCreate(LoginRequiredMixin, CreateView):
         form.instance.profile_id = self.request.user.profile.id  # Assign the currently logged in user(self.request.user) to the current movie instance
         return super().form_valid(form) # Validates and saves the instance to the database
     
-class MovieUpdate(LoginRequiredMixin, UpdateView):
+class WatchableUpdate(LoginRequiredMixin, UpdateView):
     model = Movie
     fields = ['title', 'how_heard', 'where', 'description', 'genre', 'watched']
 
-class MovieDelete(LoginRequiredMixin, DeleteView):
+class WatchableDelete(LoginRequiredMixin, DeleteView):
     model = Movie
     success_url = '/mylist/'
 
-class MovieList(LoginRequiredMixin, ListView):
+class WatchableList(LoginRequiredMixin, ListView):
     model = Movie
     fields = ['title']
 
-class MovieDetailView(LoginRequiredMixin, DetailView):
+class WatchableDetail(LoginRequiredMixin, DetailView):
     model = Movie
     
-class UserDetailView(LoginRequiredMixin, DetailView):
+class ProfileDetail(LoginRequiredMixin, DetailView):
     model = User
 
-class UserUpdate(LoginRequiredMixin, UpdateView):
+class ProfileUpdate(LoginRequiredMixin, UpdateView):
     model = User
     fields = ['first_name', 'last_name', 'email']
     success_url = '/user/1/'
+
+def follow(req, user_id, pk):
+    pass
+    # person we want to follow
+    # User.profile.get(id)

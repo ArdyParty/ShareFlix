@@ -4,18 +4,16 @@ from . import views
 urlpatterns = [ 
     path('', views.info, name='info'),
     path('home/', views.home, name='home'),
-    path('add/', views.MovieCreate.as_view(), name='movie_create' ),
-    path('mylist/', views.MovieList.as_view(), name='movie_index'),
-    path('movie/<int:pk>/', views.MovieDetailView.as_view(), name='movie_detail'),
-    path('movie/<int:pk>/update/', views.MovieUpdate.as_view(), name='movie_update'),
-    path('movie/<int:pk>/delete/', views.MovieDelete.as_view(), name='movie_delete'),
+    path('add/', views.WatchableCreate.as_view(), name='watchable_create' ),
+    path('mylist/', views.WatchableList.as_view(), name='watchable_index'),
+    path('watchable/<int:pk>/', views.WatchableDetail.as_view(), name='watchable_detail'),
+    path('watchable/<int:pk>/update/', views.WatchableUpdate.as_view(), name='watchable_update'),
+    path('watchable/<int:pk>/delete/', views.WatchableDelete.as_view(), name='watchable_delete'),
     path('accounts/signup/', views.signup, name='signup'),
-    path('user/<int:pk>/', views.UserDetailView.as_view(), name='user_detail'),
-    path('user/<int:pk>/update/', views.UserUpdate.as_view(), name='user_update'),
+    path('profile/<int:pk>/', views.ProfileDetail.as_view(), name='profile_detail'),
+    path('profile/<int:pk>/update/', views.ProfileUpdate.as_view(), name='profile_update'),
+    path('profile/<int:pk>/follow/', views.follow, name='follow'),
 ]
-
-
-
 
 # Built in URLs for django.contrib.auth.urls
 # accounts/login/ [name='login']
