@@ -8,32 +8,32 @@
     <!-- TO SEE LIST OF THEIR MOVIES -->
     <div class="col s6">
         <table class="striped">
-            <h2>My Unwatched Movies</h2>
+            <h2>Haven't Watched Yet</h2>
             <thead>
-                <tr><th>Movie</th><th>WHere</th></tr>
+                <tr><th>Title</th><th>WHere</th></tr>
             </thead>
             <tbody>
-                {% for movie in user.movie_set.all %}
-                    {% if not movie.watched %}
+                {% for watchable in user.movie_set.all %}
+                    {% if not watchable.watched %}
                     <tr>
-                        <td>{{movie.title}}</td>
-                        <td>{{movie.where}}</td>
+                        <td>{{watchable.title}}</td>
+                        <td>{{watchable.where}}</td>
                     </tr>
                     {% endif %}
                 {% endfor %}
             </tbody>
             </table>
         <table class="striped">
-            <h2>My Watched Movies</h2>
+            <h2>Watched</h2>
             <thead>
-                <tr><th>Movie</th><th>WHere</th></tr>
+                <tr><th>Title</th><th>WHere</th></tr>
             </thead>
             <tbody>
-                {% for movie in user.movie_set.all %}
-                    {% if movie.watched %}
+                {% for watchable in user.movie_set.all %}
+                    {% if watchable.watched %}
                     <tr>
-                        <td>{{movie.title}}</td>
-                        <td>{{movie.where}}</td>
+                        <td>{{watchable.title}}</td>
+                        <td>{{watchable.where}}</td>
                     </tr>
                     {% endif %}
                 {% endfor %}

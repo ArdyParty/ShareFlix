@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
-from .models import Movie
+from .models import Movie, Profile, Following
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -34,7 +34,7 @@ def signup(req):
     context = {'form': form, 'error_message': error_message}
     return render(req, 'registration/signup.html', context)
 
-class MovieCreate(LoginRequiredMixin, CreateView):
+class WatchableCreate(LoginRequiredMixin, CreateView):
     model = Movie
     fields = ['title', 'how_heard', 'where', 'description']
 
@@ -45,25 +45,32 @@ class MovieCreate(LoginRequiredMixin, CreateView):
         form.instance.profile_id = self.request.user.profile.id  # Assign the currently logged in user(self.request.user) to the current movie instance
         return super().form_valid(form) # Validates and saves the instance to the database
     
-class MovieUpdate(LoginRequiredMixin, UpdateView):
+class WatchableUpdate(LoginRequiredMixin, UpdateView):
     model = Movie
     fields = ['title', 'how_heard', 'where', 'description', 'genre', 'watched']
 
-class MovieDelete(LoginRequiredMixin, DeleteView):
+class WatchableDelete(LoginRequiredMixin, DeleteView):
     model = Movie
     success_url = '/mylist/'
 
-class MovieList(LoginRequiredMixin, ListView):
+class WatchableList(LoginRequiredMixin, ListView):
     model = Movie
     fields = ['title']
 
-class MovieDetailView(LoginRequiredMixin, DetailView):
+class WatchableDetail(LoginRequiredMixin, DetailView):
     model = Movie
     
-class UserDetailView(LoginRequiredMixin, DetailView):
+class ProfileDetail(LoginRequiredMixin, DetailView):
     model = User
 
-class UserUpdate(LoginRequiredMixin, UpdateView):
+class ProfileUpdate(LoginRequiredMixin, UpdateView):
     model = User
     fields = ['first_name', 'last_name', 'email']
     success_url = '/user/1/'
+
+def follow(req, user_id):
+    f = Following()
+    f.profile_id = req.user.profile.id
+    f.follow_id = req.user.profile.id
+    f.save()
+    
