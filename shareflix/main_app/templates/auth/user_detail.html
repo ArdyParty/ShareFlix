@@ -4,4 +4,23 @@
     <p>Member since {{ user.date_joined }}</p>  
     <p><strong>Name: </strong> {{ user.first_name }} {{ user.last_name }}</p>
     <p><strong>Email: </strong> {{ user.email }}</p>
+    <a href="{% url 'logout' %}" class="btn btn-rounded">Logout</a>
+    <!-- TO SEE LIST OF THEIR MOVIES -->
+    <div class="col s6">
+        <table class="striped">
+          <thead>
+            <tr><th>Movie</th><th>WHere</th></tr>
+          </thead>
+          <tbody>
+            {% for movie in user.movie_set.all %}
+              <tr>
+                <td>{{movie.title}}</td>
+                <td>{{movie.where}}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
 {% endblock %}
+
+
