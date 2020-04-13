@@ -1,9 +1,14 @@
-{% extends 'base.html' %}
-{% block content %}
-    <h1>User: {{ user }}</h1>
-    <!-- <p><strong>How you heard about it:</strong> {{ movie.how_heard}}</p> 
-    <p><strong>Where to find it:</strong> {{ movie.where }}</p>
-    <p><strong>Why you should watch it:</strong> {{ movie.description }}</p> 
-    <p><strong>Genre:</strong> {{ movie.genre }}</p>  
-    <p><strong>Watched:</strong> {{ movie.watched }}</p>  -->
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Username: {{ user }}</h1>
+    <p>Member since {{ user.date_joined }}</p>  
+    <p><strong>Name: </strong> {{ user.first_name }} {{ user.last_name }}</p>
+    <p><strong>Email: </strong> {{ user.email }}</p>
+</body>
+</html>
