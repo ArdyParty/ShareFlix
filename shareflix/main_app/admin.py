@@ -19,7 +19,7 @@ class CustomUserAdmin(UserAdmin):
 
 # Register your models here.
 admin.site.register(Movie)
-# admin.site.register(Profile)
+admin.site.register(Profile)
 admin.site.unregister(User)
 admin.site.register(User, CustomUserAdmin)
 
