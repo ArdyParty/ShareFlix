@@ -19,20 +19,10 @@ class Profile(models.Model):
     # TODO: Add avater and cover fields
 
     def get_absolute_url(self):
-        pass
         return reverse('profile_detail', kwargs={'pk': self.id})
 
     def __str__(self):
         return f'Profile {self.id} belongs to user_id {self.user}'
-
-# @receiver(post_save, sender=User)
-# def create_user_profile(sender, instance, created, **kwargs):
-#     if created:
-#         Profile.objects.create(user=instance)
-
-# @receiver(post_save, sender=User)
-# def save_user_profile(sender, instance, **kwargs):
-#     instance.profile.save()
 
 @receiver(post_save, sender=User)
 def create_or_update_user_profile(sender, instance, created, **kwargs):
