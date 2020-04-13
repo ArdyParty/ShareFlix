@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
-from .models import Movie
+from .models import Movie, Profile, Following
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -68,7 +68,9 @@ class ProfileUpdate(LoginRequiredMixin, UpdateView):
     fields = ['first_name', 'last_name', 'email']
     success_url = '/user/1/'
 
-def follow(req, user_id, pk):
-    pass
-    # person we want to follow
-    # User.profile.get(id)
+def follow(req, user_id):
+    f = Following()
+    f.profile_id = req.user.profile.id
+    f.follow_id = req.user.profile.id
+    f.save()
+    
