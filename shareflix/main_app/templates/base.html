@@ -15,7 +15,8 @@
 <body>
   <nav>
     <div class="logo">
-      <h3> SHAREFLIX </h3>
+<!-- INLINE STYLE needed to remove decoation from a tag, need a tag to have HOME button -->
+      <a href="{% url 'home' %}" style="color:inherit; text-decoration: none"><h3> SHAREFLIX </h3></a>
     </div>
     <ul class="nav-links">
       <li>
@@ -49,7 +50,8 @@
     <div class="inner-footer">
       <div class="footer-details">
         <!-- **NEED A LOGO IF POSSIBLE <img src="">  -->
-        <h1>SHAREFLIX</h1>
+        <!-- INLINE STYLE needed to remove decoation from a tag, need a tag to have HOME button -->
+        <a href="{% url 'home' %}" style="color:inherit; text-decoration: none"><h3> SHAREFLIX </h3></a>
       </div>
       <div class="footer-details">
         <h2>DEVELOPERS</h2>
@@ -68,7 +70,8 @@
       <div class="footer-details">
         <h2>CONTACT</h2>
         <li>shareflixapp@gmail.com</li>
-        <li class="address'">220 King St W Suite 300, Tdot, ON, Canada</li>
+        <li class="address'">220 King St W Suite 300</li>
+        <li>Tdot, ON, Canada</li>
         <li class="phone">(647) 696-1039</li>
       </div>
     </div>
