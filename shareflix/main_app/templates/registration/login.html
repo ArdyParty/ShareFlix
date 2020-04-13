@@ -1,7 +1,13 @@
-{% extends 'base.html' %}
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
     <h1>Sign In</h1>
-
+    
     <!-- login form -->
     <form method="post" action="{% url 'login' %}">
         {% csrf_token %}
@@ -9,4 +15,8 @@
         <input type="submit" class="btn" value="login">
         <input type="hidden" name="next" value="{{ next }}">
     </form>
-{% endblock %}
+    <a href="{% url 'signup' %}" class="btn btn-rounded">New User?</a>
+    
+    
+</body>
+</html>
