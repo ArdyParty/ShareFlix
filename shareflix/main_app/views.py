@@ -63,4 +63,4 @@ class UserDetailView(LoginRequiredMixin, DetailView):
 class UserUpdate(LoginRequiredMixin, UpdateView):
     model = User
     fields = ['first_name', 'last_name', 'email']
-    success_url = '/mylist/'
+    success_url = '/user/1/'
