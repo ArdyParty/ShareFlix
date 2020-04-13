@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import login
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm 
 
 
 # Create your views here.
@@ -56,12 +56,11 @@ class MovieList(LoginRequiredMixin, ListView):
 
 class MovieDetailView(LoginRequiredMixin, DetailView):
     model = Movie
-
-class MovieUpdate(LoginRequiredMixin, UpdateView):
-    model = Movie
-    fields = '__all__'
-    template_url = 'movie_form.html'
-    success_url = '/mylist/'
     
 class UserDetailView(LoginRequiredMixin, DetailView):
     model = User
+
+class UserUpdate(LoginRequiredMixin, UpdateView):
+    model = User
+    fields = ['first_name', 'last_name', 'email']
+    success_url = '/mylist/'
