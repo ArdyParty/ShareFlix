@@ -102,3 +102,7 @@ tags
 #######
 *.pyc
 __pycache__/
+
+# VSCode #
+#######
+.vscode/
