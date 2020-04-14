@@ -75,3 +75,5 @@ def follow(req, profile_id):
     f.save()
     return render(req, 'home.html')
     
+class FollowingList(LoginRequiredMixin, ListView):
+    model = Following

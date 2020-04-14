@@ -26,7 +26,7 @@
         <a href="{% url 'profile_detail' user.id %}"><i class="far fa-user"></i></i>Profile</a>
       </li>
       <li>
-        <a href="#"><i class="far fa-address-book"></i>Friends</a>
+        <a href="{% url 'following' user.id %}"><i class="far fa-address-book"></i>Friends</a>
       </li>
       <li>
         <a href="#"><i class="fas fa-cog"></i>Settings</a>
