@@ -68,9 +68,10 @@ class ProfileUpdate(LoginRequiredMixin, UpdateView):
     fields = ['first_name', 'last_name', 'email']
     success_url = '/user/1/'
 
-def follow(req, user_id):
+def follow(req, profile_id):
     f = Following()
     f.profile_id = req.user.profile.id
-    f.follow_id = req.user.profile.id
+    f.follow_id = profile_id
     f.save()
+    return render(req, 'home.html')
     
