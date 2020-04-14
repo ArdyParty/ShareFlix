@@ -15,14 +15,14 @@ from django.dispatch import receiver
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
-    fave_movie = models.CharField(max_length=100, default='', blank=True)
+    fave_movie = models.CharField(max_length=100, default='', blank=True, verbose_name='Favourite Movie')
     # TODO: Add avater and cover fields
 
     def get_absolute_url(self):
         return reverse('profile_detail', kwargs={'pk': self.id})
 
     def __str__(self):
-        return f'Profile {self.id} belongs to user_id {self.user}'
+        return f'{self.user} ({self.user.id})\'s profile ({self.id})'
 
 @receiver(post_save, sender=User)
 def create_or_update_user_profile(sender, instance, created, **kwargs):
@@ -31,8 +31,11 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
     instance.profile.save()
 
 class Following(models.Model):
-    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, verbose_name='Project')
     follow = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name="follow")
+
+    def __str__(self):
+        return f'{self.profile.user} follows {self.follow.user}'
 
 class Movie(models.Model):
     date = models.DateTimeField(default=now)
