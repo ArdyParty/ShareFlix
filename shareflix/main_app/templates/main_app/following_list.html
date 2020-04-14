@@ -1,5 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>People I Follow</h1>
+    <h1>People I Follow</h1>
+    <ul>
+        <li>{{user.profile.following_set.all}}</li>
+    </ul>
+    {% for person in user.profile.following_set.all %}
+    <ul>
+        
+        <li>{{person.follow.profile.id}}</li>
+    </ul>
+    {% endfor %}
+
+
 {% endblock %}
