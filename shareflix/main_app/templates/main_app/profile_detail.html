@@ -33,7 +33,7 @@
                 {% for watchable in profile.movie_set.all %}
                     {% if watchable.watched %}
                     <tr>
-                        <td>{{watchable.title}}</td>
+                        <td><a href="{% url 'watchable_detail' watchable.id %}">{{watchable.title}}</a></td>
                         <td>{{watchable.where}}</td>
                     </tr>
                     {% endif %}
