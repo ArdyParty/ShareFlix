@@ -10,10 +10,10 @@
         <table class="striped">
             <h2>Haven't Watched Yet</h2>
             <thead>
-                <tr><th>Title</th><th>WHere</th></tr>
+                <tr><th>Title</th><th>Where</th></tr>
             </thead>
             <tbody>
-                {% for watchable in user.movie_set.all %}
+                {% for watchable in profile.movie_set.all %}
                     {% if not watchable.watched %}
                     <tr>
                         <td>{{watchable.title}}</td>
@@ -26,10 +26,10 @@
         <table class="striped">
             <h2>Watched</h2>
             <thead>
-                <tr><th>Title</th><th>WHere</th></tr>
+                <tr><th>Title</th><th>Where</th></tr>
             </thead>
             <tbody>
-                {% for watchable in user.movie_set.all %}
+                {% for watchable in profile.movie_set.all %}
                     {% if watchable.watched %}
                     <tr>
                         <td>{{watchable.title}}</td>

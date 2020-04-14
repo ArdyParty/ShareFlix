@@ -61,7 +61,7 @@ class WatchableDetail(LoginRequiredMixin, DetailView):
     model = Movie
     
 class ProfileDetail(LoginRequiredMixin, DetailView):
-    model = User
+    model = Profile
 
 class ProfileUpdate(LoginRequiredMixin, UpdateView):
     model = User
