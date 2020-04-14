@@ -5,9 +5,7 @@
     {% for person in user.profile.following_set.all %}
     <ul>
         
-        <li>{{person.follow.user}}</li>
+        <li><a href="{% url 'profile_detail' person.follow.user.id %}">{{person.follow.user}}</a></li>
     </ul>
     {% endfor %}
-
-
 {% endblock %}
