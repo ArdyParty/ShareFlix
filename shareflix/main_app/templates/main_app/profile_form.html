@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1>{{ user.username }}</h1>
+    <h1>Username: {{ profile.user.username }}</h1>
     <form action="" method="post">
         <!-- Django requires the following for security purposes -->
         {% csrf_token %}

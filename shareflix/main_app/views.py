@@ -65,8 +65,9 @@ class ProfileDetail(LoginRequiredMixin, DetailView):
 
 class ProfileUpdate(LoginRequiredMixin, UpdateView):
     model = User
-    fields = ['first_name', 'last_name', 'email']
-    success_url = '/user/1/'
+    fields = '__all__'
+    # fields = [ 'username', 'first_name', 'last_name','email']
+
 
 def follow(req, profile_id):
     f = Following()
