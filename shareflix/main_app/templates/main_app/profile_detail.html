@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1>Username: {{ user }}</h1>
-    <p>Member since {{ user.date_joined }}</p>  
-    <p><strong>Name: </strong> {{ user.first_name }} {{ user.last_name }}</p>
-    <p><strong>Email: </strong> {{ user.email }}</p>
+    <h1>Username: {{ profile.user }}</h1>
+    <p>Member since {{ profile.date_joined }}</p>  
+    <p><strong>Name: </strong> {{ profile.user.first_name }} {{ profile.user.last_name }}</p>
+    <p><strong>Email: </strong> {{ profile.user.email }}</p>
+    <a href="#" class="btn btn-rounded">Follow</a>
     <a href="{% url 'logout' %}" class="btn btn-rounded">Logout</a>
     <!-- TO SEE LIST OF THEIR MOVIES -->
     <div class="col s6">
