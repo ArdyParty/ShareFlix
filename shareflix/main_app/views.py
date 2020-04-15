@@ -6,7 +6,9 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import login
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm 
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm # NOTE: Currently not using UserChangeForm
+from .forms import UserForm, ProfileForm
+
 
 
 # Create your views here.
@@ -78,3 +80,43 @@ def follow(req, profile_id):
     
 class FollowingList(LoginRequiredMixin, ListView):
     model = Following
+
+# def settings(req):
+#     error_message = ''
+#     #profile = user.profile
+#     if req.method == 'POST':
+#         user_form = UserForm(req.POST)
+#         profile_form = ProfileForm(req.POST)
+#         if user_form.is_valid():
+#             # Get current profile and update with form stuff
+#             # request.userprofile. = settings_form.save()
+#             #user = user_form.save()
+#             #profile = profile_form.save()
+#             return redirect('home')
+#         else:
+#             error_message = 'Invalid Settings'
+#     # A bad POST or a GET request, so render signup.html with an empty form
+#     #user_form = UserForm()
+#     profile_form = ProfileForm()
+#     # context = {'form': form, 'error_message': error_message}
+#     # return render(request, 'home/', context) # FIX route
+#     return render(req, 'main_app/profile_detail.html', {
+#         #'user_form': user_form, 
+#         'profile_form': profile_form,
+#         'error_message': error_message
+#         })
+
+def settings(request):
+    user = request.user
+    p = user.profile
+    print(p)
+    if (request.method == 'POST'):
+        user_form = UserForm(request.POST or None)
+        profile_form = ProfileForm(request.POST or None)
+        if profile_form.is_valid() and user_form.is_valid:
+            user_form.save()
+            profile_form.save()
+    user_form = UserForm(instance=user)
+    profile_form = ProfileForm(instance=p)
+    context = {'user_form': user_form,'profile_form': profile_form,}
+    return render(request, 'main_app/settings.html', context)

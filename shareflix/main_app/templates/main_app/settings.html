@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>{{ user }}</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table>
+            {{ user_form.as_p }}
+            {{ profile_form.as_p }}
+        </table>
+        <input type="submit" value="SUBMIT" class="btn">
+    </form>
+{% endblock %}

@@ -11,9 +11,10 @@ urlpatterns = [
     path('watchable/<int:pk>/delete/', views.WatchableDelete.as_view(), name='watchable_delete'),
     path('accounts/signup/', views.signup, name='signup'),
     path('profile/<int:pk>/', views.ProfileDetail.as_view(), name='profile_detail'),
-    path('profile/<int:pk>/update/', views.ProfileUpdate.as_view(), name='profile_update'),
+    # path('profile/<int:pk>/update/', views.ProfileUpdate.as_view(), name='profile_update'),
     path('profile/<int:profile_id>/follow/', views.follow, name='follow'),
     path('profile/<int:pk>/following/', views.FollowingList.as_view(), name='following'),
+    path('settings/', views.settings, name='settings'),
 ]
 
 # Built in URLs for django.contrib.auth.urls
