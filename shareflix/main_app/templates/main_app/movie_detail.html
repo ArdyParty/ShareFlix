@@ -1,11 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1>Title: {{ movie.title }}</h1>
-    <p><strong>How you heard about it:</strong> {{ movie.how_heard}}</p>
+    <h1>{{ movie.title }}</h1>
+    <p><strong></strong>How you heard about it:</strong> {{ movie.how_heard}}</p>
     <p><strong>Where to find it:</strong> {{ movie.where }}</p>
-    <p><strong>Why you should watch it:</strong> {{ movie.description }}</p>
+    <p><strong>Why watch it:</strong> {{ movie.description }}</p>
     <p><strong>Genre:</strong> {{ movie.genre }}</p>
     <p><strong>Watched:</strong> {{ movie.watched }}</p>
     <a href="{% url 'watchable_update' movie.id %}">Edit</a>
-
 {% endblock %}
