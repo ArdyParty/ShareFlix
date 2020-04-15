@@ -21,20 +21,23 @@ def info(req):
     return render(req, 'info.html')
 
 def signup(req):
-    error_message = ''
+    #error_message = ''
     if req.method == 'POST':
+        print('Foo')
         # This is how to create a 'user' form object that includes the data from the browser
         form = UserCreationForm(req.POST)
         if form.is_valid():
             user = form.save() # Add the user to the database
             login(req, user) # Log a user in via code
             return redirect('home')
-        else:
-            error_message = 'Invalid sign up - try again'
-    # A bad POST or a GET request, so render signup.html with an empty form
-    form = UserCreationForm()
-    context = {'form': form, 'error_message': error_message}
-    return render(req, 'registration/signup.html', context)
+    #     else:
+    #         error_message = 'Invalid sign up - try again'
+    # # A bad POST or a GET request, so render signup.html with an empty form
+    # form = UserCreationForm()
+    # context = {'form': form, 'error_message': error_message}
+    # return render(req, 'registration/signup.html', context) # redirect to login page
+    print('bar')
+    return redirect('login') # redirect to login page
 
 class WatchableCreate(LoginRequiredMixin, CreateView):
     model = Movie
