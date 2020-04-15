@@ -107,16 +107,20 @@ class FollowingList(LoginRequiredMixin, ListView):
 #         })
 
 def settings(request):
-    user = request.user
-    p = user.profile
-    print(p)
+    user = request.user # Current user
+    profile = user.profile # Current user's profile
     if (request.method == 'POST'):
-        user_form = UserForm(request.POST or None)
-        profile_form = ProfileForm(request.POST or None)
-        if profile_form.is_valid() and user_form.is_valid:
+        user_form = UserForm(request.POST or None, instance=user) # Once you change the instance arg from a new object to an existing one
+        profile_form = ProfileForm(request.POST or None, instance=profile)
+        if profile_form.is_valid() and user_form.is_valid():
+            user_update = user_form.save(commit=False)
+            profile_update = profile_form.save(commit=False)
+            user_update.id = user.id
+            profile_update.id = profile.id
             user_form.save()
             profile_form.save()
-    user_form = UserForm(instance=user)
-    profile_form = ProfileForm(instance=p)
+            return redirect('profile_detail', user.id)
+    user_form = UserForm(instance=user) # Start off with users data
+    profile_form = ProfileForm(instance=profile)
     context = {'user_form': user_form,'profile_form': profile_form,}
     return render(request, 'main_app/settings.html', context)
