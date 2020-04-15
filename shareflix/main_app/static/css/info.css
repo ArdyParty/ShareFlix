@@ -49,16 +49,16 @@ img {
 .showcase-top .logo {
   letter-spacing: 5px;
   margin-left: 20px;
-  width: 100%;
+  width: 400px;
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: 20%;
   transform: translate(-50%, -50%);
 }
 
 .showcase-top a {
   position: absolute;
-  top: 50%;
+  top: 55%;
   right: 0;
   transform: translate(-50%, -50%);
 }
@@ -81,6 +81,7 @@ img {
   font-size: 90px;
   line-height: 1.1;
   margin: 0 0 32px;
+  width: 900px;
 }
 
 .showcase-content p {
@@ -118,19 +119,20 @@ img {
   padding: 30px 0 0;
   color: rgba(240, 141, 155, 0.9);
   z-index: 2;
+  height: 190px;
 }
 
-.tabs .container #tab-1 {
+#tab-1 {
   background: url('../images/julie.jpg') no-repeat;
   background-size: 120%;
 }
 
-.tabs .container #tab-2 {
+#tab-2 {
   background: url('../images/arvin.jpg') no-repeat;
   background-size: 120%;
 }
 
-.tabs .container #tab-3 {
+#tab-3 {
   background: url('../images/pete.jpg') no-repeat;
   background-size: 100%;
 }
@@ -165,32 +167,34 @@ img {
 }
 
 /* Hide initial content */
-#tab-1-content,
-#tab-2-content,
-#tab-3-content {
+.tab-content .container {
   display: none;
-  opacity: 0;
 }
 
-.show {
+.tab-content .container .active[data-tab-content] {
+  display: block;
   display: block !important;
   opacity: 1 !important;
   transition: all 1000 ease-in;
 }
 
-#tab-1-content .tab-1-content-inner {
+/*.show {
+}*/
+
+#tab-1-content {
+  grid-gap: 16px;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+}
+
+#tab-2-content {
   grid-gap: 16px;
   align-items: center;
   justify-content: center;
 }
 
-#tab-2-content .tab-2-content-inner {
-  grid-gap: 16px;
-  align-items: center;
-  justify-content: center;
-}
-
-#tab-3-content .tab-3-content-inner {
+#tab-3-content {
   grid-gap: 16px;
   align-items: center;
   justify-content: center;
@@ -256,28 +260,41 @@ img {
   text-transform: uppercase;
 }
 
-@media (max-width: 960px) {
 
+
+
+@media (max-width: 1000px) {
   .showcase {
-    height: 80vh;
+    height: 70vh;
   }
 
   .hide-sm {
     display: none;
   }
 
+  .showcase-top .logo {
+    top: 30%;
+    left: 5%;
+    transform: translate(0);
+  }
+
   .showcase-content h1 {
-    font-size: 60px;
+    font-size: 50px;
     line-height: 1;
+    width: 500px;
   }
 
   .showcase-content p {
-    font-size: 24px;
+    font-size: 1.5rem;
+  }
+
+  .footer .footer-cols {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .btn-xl {
-    font-size: 24px;
-    padding: 22px 32px;
+    font-size: 1.5rem;
+    padding: 1.4rem 2rem;
     text-transform: uppercase;
   }
 
@@ -294,12 +311,41 @@ img {
     margin-bottom: 1rem;
     font-size: 1.2rem;
   }
+
+  .tabs i {
+    font-size: 35px;
+    padding-top: 10px;
+  }
+
+  .tabs p {
+    font-size: 20px;
+    display: block;
+    margin: 0;
+    font-weight: bold;
+    letter-spacing: 1px;
+    padding-top: 20px;
+  }
+
+  .tabs .container > div {
+    padding-top: 0px;
+    height: 120px;
+  }
+
+  #tab-2, #tab-1 {
+    height: 120px;
+    background-size: 120%;
+  }
+
+  #tab-3 {
+    height: 120px;
+    background-size: 100%;
+  }
 }
 
 @media (max-width: 700px) {
   .showcase::after {
     background: rgba(0, 0, 0, 0.6);
-    box-shadow: inset 5px 0px 150px #ff98a7, inset -5px -80px 150px #ff98a7;
+    box-shadow: inset 10px 0px 100px #ff98a7, inset -10px -40px 150px #ff98a7;
   }
 
   .showcase-content h1 {
@@ -311,24 +357,6 @@ img {
     font-size: 16px;
   }
 
-  #tab-1-content .tab-1-content-inner {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-
-  #tab-2-content .tab-2-content-top {
-    display: block;
-    text-align: center;
-  }
-
-  #tab-2-content .tab-2-content-bottom {
-    margin-top: 2rem;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: 2rem;
-    text-align: center;
-  }
-
   .btn-xl {
     font-size: 1rem;
     padding: 1.2rem 1.6rem;
@@ -336,11 +364,43 @@ img {
   }
 }
 
-@media(max-height: 600px) {
-  .showcase-content {
-    margin-top: 3rem;
+@media(max-width: 600px) {
+  .tabs i {
+    font-size: 20px;
+    padding-top: 2px;
+    font-weight: 900;
+  }
+
+  .tabs p {
+    font-size: 18px;
+    display: block;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    padding-top: 3px;
+    margin: 0;
+  }
+
+  .tabs .container > div {
+    padding-top: 8px;
+  }
+
+  #tab-2, #tab-1 {
+    height: 80px;
+    background-size: 120%;
+  }
+
+  #tab-3 {
+    height: 80px;
+    background-size: 100%;
   }
 }
+
+@media(max-height: 600px) {
+  .showcase-content {
+    margin-top: 48px;
+  }
+}
+
 
 
 

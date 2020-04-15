@@ -24,15 +24,15 @@
   <!-- each story tab -->
   <section class="tabs">
     <div class="container">
-      <div id="tab-1" class="tab-item tab-border">
+      <div id="tab-1" class="tab-item tab-border" data-tab-target="tab-1-content">
         <i class="fas fa-user-alt fa-3x"></i>
         <p class="hide-sm">meet Zahra</p>
       </div>
-      <div id="tab-2" class="tab-item tab-border">
+      <div id="tab-2" class="tab-item tab-border" data-tab-target="tab-2-content">
         <i class="fas fa-user-alt fa-3x"></i>
         <p class="hide-sm">meet Arvin</p>
       </div>
-      <div id="tab-3" class="tab-item tab-border">
+      <div id="tab-3" class="tab-item tab-border" data-tab-target="tab-3-content">
         <i class="fas fa-user-alt fa-3x"></i>
         <p class="hide-sm">meet Bryan</p>
       </div>
@@ -43,24 +43,24 @@
   <section class="tab-content">
     <div class="container">
       <!-- CONTENT OF STORY -->
-      <div id="tab-1-content" class="tab-content-item show">
-        <div class="tab-1-content-inner">
+      <div id="tab-1-content" data-tab-content class="active">
+        <div class="tab-1-content">
           <div>
             <p class="text-lg">She remembered a text conversation where a friend recommended a show she’d love but she can’t remember the name or who it was with.</p>
             <p class="text-lg">She checks her texts, Slack, FB messenger, and four different WhatsApp groups before she finally finds the name of the show.</p>
           </div>
         </div>
       </div>
-      <div id="tab-2-content" class="tab-content-item show">
-        <div class="tab-2-content-top">
+      <div id="tab-2-content" data-tab-content>
+        <div class="tab-2-content">
           <div>
             <p class="text-lg">They sit down to watch a show a friend said they’d love but Arvin doesn’t know where to look.</p>
             <p class="text-lg">They log into Netflix, Apple TV, and Crave, before finally finding it on Prime Video...</p>
           </div>
         </div>
       </div>
-      <div id="tab-3-content" class="tab-content-item show">
-        <div class="tab-3-content-bottom">
+      <div id="tab-3-content" data-tab-content>
+        <div class="tab-3-content">
           <div>
             <p class="text-lg">He’s organized, so he opens up his note taking app to see the list of movie recommendations he’s curated from his friends.</p>
             <p class="text-lg">But there’s no context, no description of why he would like it, or who recommended it, so he ends up watching the trailers for each movie before finally deciding to just head to bed...</p>
