@@ -1,53 +1,63 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} 
 {% block content %}
-    <h1>Username: {{ profile.user }}</h1>
-    <p>Member since {{ profile.date_joined }}</p>  
-    <p><strong>Name: </strong> {{ profile.user.first_name }} {{ profile.user.last_name }}</p>
-    <p><strong>Email: </strong> {{ profile.user.email }}</p>
-    <p><strong>Fave Flick: </strong> {{ profile.fave_movie }}</p>
-    <a href="{% url 'follow' profile.id %}" class="btn btn-rounded">Follow</a>
-    <a href="{% url 'logout' %}" class="btn btn-rounded">Logout</a>
-    <!-- TO SEE LIST OF THEIR MOVIES -->
-    <div class="col s6">
-        <table class="striped">
-            <h2>Haven't Watched Yet</h2>
-            <thead>
-                <tr><th>Title</th><th>Where</th></tr>
-            </thead>
-            <tbody>
-                {% for watchable in profile.movie_set.all %}
-                    {% if not watchable.watched %}
-                    <tr>
-                        <td><a href="{% url 'watchable_detail' watchable.id %}">{{watchable.title}}</a></td>
-                        <td>{{watchable.where}}</td>
-                    </tr>
-                    {% endif %}
-                {% endfor %}
-            </tbody>
-            </table>
-        <table class="striped">
-            <h2>Watched</h2>
-            <thead>
-                <tr><th>Title</th><th>Where</th></tr>
-            </thead>
-            <tbody>
-                {% for watchable in profile.movie_set.all %}
-                    {% if watchable.watched %}
-                    <tr>
-                        <td><a href="{% url 'watchable_detail' watchable.id %}">{{watchable.title}}</a></td>
-                        <td>{{watchable.where}}</td>
-                    </tr>
-                    {% endif %}
-                {% endfor %}
-            </tbody>
-            </table>
-        </div>
-        <form action="{% url 'home' %}" method="post">
-            {% csrf_token %}
-            {{ user_form.as_p }}
-            {{ profile_form.as_p }}
-            <input type="submit" class="btn" value="UPDATE">
-        </form>
+<h1>{{ profile.user }}</h1>
+<form action="{% url 'settings' %}" method="get">
+  <input type="submit" class="btn" value="Settings" />
+</form>
+<p>
+  <strong>Name: </strong> {{ profile.user.first_name }} 
+  {{ profile.user.last_name }}
+</p>
+<p><strong>Email: </strong> {{ profile.user.email }}</p>
+<p><strong>Fave Flick: </strong> {{ profile.fave_movie }}</p>
+<a href="{% url 'follow' profile.id %}" class="btn btn-rounded">Follow</a>
+
+
+<!-- TO SEE LIST OF THEIR MOVIES -->
+<div class="col s6">
+  <table class="striped">
+    <h2>My WatchList</h2>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Where to Watch</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for watchable in profile.movie_set.all %} 
+      {% if not watchable.watched %}
+      <tr>
+        <td>
+          <a href="{% url 'watchable_detail' watchable.id %}"
+            >{{watchable.title}}</a
+          >
+        </td>
+        <td>{{watchable.where}}</td>
+      </tr>
+      {% endif %} 
+      {% endfor %}
+    </tbody>
+  </table>
+  <table class="striped">
+    <h2>My Recommendations</h2>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Do I recommend this?</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for watchable in profile.movie_set.all %} {% if watchable.watched %}
+      <tr>
+        <td>
+          <a href="{% url 'watchable_detail' watchable.id %}"
+            >{{watchable.title}}</a
+          >
+        </td>
+        <td>{{watchable.where}}</td>
+      </tr>
+      {% endif %} {% endfor %}
+    </tbody>
+  </table>
+</div>
 {% endblock %}
-
-
