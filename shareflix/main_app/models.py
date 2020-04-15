@@ -38,7 +38,7 @@ class Movie(models.Model):
     description = models.TextField(max_length=1000, default='', blank=True)
     genre = models.CharField(max_length=100, default='', blank=True)
     watched = models.BooleanField(default=False)
-    recommend = models.BooleanField(default=False)
+    recommend = models.BooleanField()
     private = models.BooleanField(default=False)
 
     def __str__(self):
