@@ -20,6 +20,9 @@ def home(req):
 def info(req):
     return render(req, 'info.html')
 
+def profile_login(req):
+    return redirect('profile_detail', req.user.profile.id)
+
 def signup(req):
     #error_message = ''
     if req.method == 'POST':
@@ -72,7 +75,6 @@ class ProfileUpdate(LoginRequiredMixin, UpdateView):
     model = User
     fields = '__all__'
     # fields = [ 'username', 'first_name', 'last_name','email']
-
 
 def follow(req, profile_id):
     f = Following()
@@ -127,3 +129,4 @@ def settings(request):
     profile_form = ProfileForm(instance=profile)
     context = {'user_form': user_form,'profile_form': profile_form,}
     return render(request, 'main_app/settings.html', context)
+
