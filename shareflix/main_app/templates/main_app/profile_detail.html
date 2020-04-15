@@ -1,12 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1>Username: {{ profile.user }}</h1>
-    <p>Member since {{ profile.date_joined }}</p>  
+    <h1>{{ profile.user }}</h1>
     <p><strong>Name: </strong> {{ profile.user.first_name }} {{ profile.user.last_name }}</p>
     <p><strong>Email: </strong> {{ profile.user.email }}</p>
     <p><strong>Fave Flick: </strong> {{ profile.fave_movie }}</p>
     <a href="{% url 'follow' profile.id %}" class="btn btn-rounded">Follow</a>
-    <a href="{% url 'logout' %}" class="btn btn-rounded">Logout</a>
+
     <!-- TO SEE LIST OF THEIR MOVIES -->
     <div class="col s6">
         <table class="striped">
