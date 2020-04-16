@@ -45,6 +45,7 @@ nav {
 .burger {
   display: none;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .burger div {
@@ -55,6 +56,11 @@ nav {
   border-radius: 20%;
   border-color: linen;
   transition: all 0.5s ease;
+}
+
+main {
+  background-color: linen;
+  padding-left: 3%;
 }
 
 /*MODAL BUTTON*/
@@ -260,20 +266,8 @@ th {
 
 
 /*transitions & animations:*/
-@media screen and (max-width:1100px) {
-  .nav-links {
-    display: flex;
-    justify-content: space-around;
-    width: 55%;
-  }
-  .nav-links:last-child {
-    margin-right: 1px;
-  }
 
-  .footer-details {
-    width: 50%;
-  }
-}
+
 
 @media screen and (max-width:650px) {
   body {
@@ -283,7 +277,7 @@ th {
     position: absolute;
     box-sizing: border-box;
     right: 0;
-    height: 70%;
+    height: 100%;
     top: 8vh;
     background-color: #ff98a7;
     display: flex;
@@ -292,7 +286,7 @@ th {
     width: 30%;
     transform: translateX(100%);
     transition: transform 0.4s ease-in;
-    padding-bottom: 350px;
+    padding-bottom: 600px;
   }
   .nav-links li {
     opacity: 0;
@@ -301,7 +295,11 @@ th {
     transform: translateX(0%);
   }
   .burger {
+    border-radius: 20px;
     display: block;
+  }
+  .burger:hover {
+    background-color: rgba(255, 81, 108, 0.8);
   }
   .footer-details {
     width: 100%;
@@ -324,6 +322,44 @@ th {
 
   .nav-active {
     transform: translateX(0%);
+  }
+}
+
+@media screen and (max-height: 850px) {
+  .nav-links {
+    padding-bottom: 450px;
+    height: 100%;
+  }
+}
+
+@media screen and (max-height: 700px) {
+  .nav-links {
+    height: 100%;
+    padding-bottom: 280px;
+  }
+}
+
+@media screen and (max-height: 550px) {
+  .nav-links {
+    top: 12vh;
+    height: 100%;
+    padding-bottom: 40vh;
+  }
+}
+
+@media screen and (max-width: 1100px) and (min-width: 650px), (min-width: 1100px) {
+  .nav-links {
+    display: flex;
+    justify-content: space-around;
+    width: 55%;
+    padding-bottom: 0;
+  }
+  .nav-links:last-child {
+    margin-right: 1px;
+  }
+
+  .footer-details {
+    width: 50%;
   }
 }
 
