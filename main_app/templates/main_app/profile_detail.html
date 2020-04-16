@@ -11,11 +11,15 @@
     <p><strong>email: </strong> {{ profile.user.email }}</p>
     <p><strong>Fave Flick: </strong> {{ profile.fave_movie }}</p>
     <p><strong>Fave Quote: </strong><em>{{ profile.quote }}</em></p>
+    
+    <!-- FOLLOW BUTTON CHANGES BASED ON USER -->
     {% if profile.user != request.user %}
         <a href="{% url 'follow' profile.id %}" class="btn btn-rounded">Follow</a>
     {% endif %}
 
-    <!-- TO SEE LIST OF THEIR MOVIES -->
+    
+
+    <!-- TO SEE LIST OF TO WATCH, PRIVATE -->
     {% if profile.user == request.user %}
     <div class="col s6">
     <table class="striped">
@@ -42,6 +46,7 @@
         </tbody>
     </table>
     {% endif %}
+    <!-- DISPLAYS LIST OF WATCHED ITEMS AND RECOMMENDATINS -->
     <table class="striped">
         <h2>My Recommendations</h2>
         <thead>
