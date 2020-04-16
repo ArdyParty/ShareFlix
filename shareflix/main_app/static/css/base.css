@@ -99,10 +99,13 @@ nav {
 
 /* Modal Content */
 .modal-content {
+  border: solid red 2px;
+  border-radius: 20px;
   position: fixed;
   top: 100px;
+  left: 5%;
   background-color: #fefefe;
-  width: 100%;
+  width: 90%;
   -webkit-animation-name: slideIn;
   -webkit-animation-duration: 0.4s;
   animation-name: slideIn;
@@ -126,16 +129,23 @@ nav {
 
 .modal-header {
   padding: 2px 16px;
-  background-color: #5cb85c;
-  color: white;
+  background-color: #ff98a7;
+  color: linen;
 }
 
-.modal-body {padding: 2px 16px;}
+.modal-body {
+  padding: 2px 16px;
+  background-color: #fffaf4;
+}
 
 .modal-footer {
   padding: 2px 16px;
-  background-color: #5cb85c;
-  color: white;
+  background-color: #ff98a7;
+  color: linen;
+}
+
+th {
+  color: #ff98a7;
 }
 
 /* Add Animation */
