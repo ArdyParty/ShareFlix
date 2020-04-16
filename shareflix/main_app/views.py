@@ -82,7 +82,14 @@ def follow(req, profile_id):
     f.follow_id = profile_id
     f.save()
     return render(req, 'home.html')
-    
+
+# def unfollow(req, profile_id):
+#     f = Following()
+#     f.profile_id = req.user.profile.id
+#     f.follow_id = profile_id
+#     f.save()
+#     return render(req, 'home.html')
+
 class FollowingList(LoginRequiredMixin, ListView):
     model = Following
 
