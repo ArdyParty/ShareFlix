@@ -83,6 +83,10 @@ class WatchableDetail(LoginRequiredMixin, DetailView):
 class ProfileDetail(LoginRequiredMixin, DetailView):
     model = Profile
 
+    def check_user(self):
+        if self.is_authenticated:
+            print(foo)
+
 class ProfileUpdate(LoginRequiredMixin, UpdateView):
     model = Profile
     fields = '__all__'
