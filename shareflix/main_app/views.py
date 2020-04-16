@@ -72,7 +72,7 @@ class ProfileDetail(LoginRequiredMixin, DetailView):
     model = Profile
 
 class ProfileUpdate(LoginRequiredMixin, UpdateView):
-    model = User
+    model = Profile
     fields = '__all__'
     # fields = [ 'username', 'first_name', 'last_name','email']
 
@@ -82,7 +82,14 @@ def follow(req, profile_id):
     f.follow_id = profile_id
     f.save()
     return render(req, 'home.html')
-    
+
+# def unfollow(req, profile_id):
+#     f = Following()
+#     f.profile_id = req.user.profile.id
+#     f.follow_id = profile_id
+#     f.save()
+#     return render(req, 'home.html')
+
 class FollowingList(LoginRequiredMixin, ListView):
     model = Following
 
@@ -124,7 +131,7 @@ def settings(request):
             profile_update.id = profile.id
             user_form.save()
             profile_form.save()
-            return redirect('profile_detail', user.id)
+            return redirect('profile_detail', profile.id)
     user_form = UserForm(instance=user) # Start off with users data
     profile_form = ProfileForm(instance=profile)
     context = {'user_form': user_form,'profile_form': profile_form,}
