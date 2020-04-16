@@ -1,0 +1,321 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/*everything NAV bar and Side bar related*/
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 8vh;
+  background-color: #ff98a7;
+}
+
+.logo {
+  color: linen;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: 40px;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-around;
+  width: 35%;
+}
+
+.nav-links a {
+  color: linen;
+  letter-spacing: 2px;
+  font-weight: bold;
+  font-size: 15px;
+  margin: 0 10px;
+}
+
+.burger {
+  display: none;
+  cursor: pointer;
+}
+
+.burger div {
+  width: 25px;
+  height: 3px;
+  background-color: linen;
+  margin: 5px;
+  border-radius: 20%;
+  border-color: linen;
+  transition: all 0.5s ease;
+}
+
+/*MODAL BUTTON*/
+.bubble-button {
+  margin-bottom: 14px;
+  width: 70px;
+  height: 70px;
+  background-color: #ff98a7;
+  border-radius: 10%;
+  box-shadow: 0 6px 10px 0 #ff98a7;
+  transition: all 0.2s ease-in-out;
+ 
+  font-size: 60px;
+  color: linen;
+  text-align: center;
+  line-height: 72px;
+  border-style: none;
+ 
+  position: relative;
+  right: -80%;
+}
+ 
+.bubble-button:hover {
+   box-shadow: 0 6px 14px 0 #ff98a7;
+   transform: scale(1.25);
+}
+
+/*MODAL STYLING*/
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  -webkit-animation-name: fadeIn; /* Fade in the background */
+  -webkit-animation-duration: 0.4s;
+  animation-name: fadeIn;
+  animation-duration: 0.4s
+}
+
+/* Modal Content */
+.modal-content {
+  position: fixed;
+  top: 100px;
+  background-color: #fefefe;
+  width: 100%;
+  -webkit-animation-name: slideIn;
+  -webkit-animation-duration: 0.4s;
+  animation-name: slideIn;
+  animation-duration: 0.4s
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header {
+  padding: 2px 16px;
+  background-color: #5cb85c;
+  color: white;
+}
+
+.modal-body {padding: 2px 16px;}
+
+.modal-footer {
+  padding: 2px 16px;
+  background-color: #5cb85c;
+  color: white;
+}
+
+/* Add Animation */
+
+
+@-webkit-keyframes fadeIn {
+  from {opacity: 0} 
+  to {opacity: 1}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0} 
+  to {opacity: 1}
+}
+
+
+
+/*everything footer related:*/
+.footer {
+  font-family: 'Poppins', sans-serif;
+  width: 100%;
+  display: block;
+  overflow: hidden;
+  padding: 10px 5px 0 5px;
+  background-color: #ff98a7;
+  color: linen;
+  position: relative;
+  bottom: -100%;
+  letter-spacing: 3px;
+}
+
+.inner-footer {
+  display: block;
+  margin: 5px 0;
+  width: 95%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  justify-content: center;
+}
+
+.footer-details {
+  width: 25%;
+  padding: 10px 1px;
+  box-sizing: border-box;
+}
+
+.inner-footer .footer-details h1 {
+  padding: 10px 0;
+  font-size: 30px;
+}
+
+.inner-footer .footer-details h2 {
+  opacity: 0.7;
+  margin: 10px 0;
+  font-size: 16px;
+  font-weight: lighter;
+}
+
+.inner-footer .footer-details li {
+  letter-spacing: 1px;
+  font-size: 16px;
+  text-align: justify;
+  line-height: 15px;
+  margin: 10px 0;
+  height: 15px;
+}
+
+.inner-footer .footer-details li a {
+  text-decoration: none;
+  outline: none;
+  color: linen;
+  transition: 0.3s;
+}
+
+.inner-footer .footer-details li i {
+  margin-right: 10px;
+}
+
+.inner-footer .footer-details li a:hover {
+  color: #ff516c;
+}
+
+.inner-footer .footer-details li .address {
+  font-size: 13px;
+}
+
+.inner-footer .footer-details li .phone {
+  font-size: 13px;
+}
+
+.footer-bottom {
+  display: center;
+  padding: 10px;
+  font-size: 12px;
+}
+
+
+/*transitions & animations:*/
+@media screen and (max-width:1100px) {
+  .nav-links {
+    display: flex;
+    justify-content: space-around;
+    width: 55%;
+  }
+  .nav-links:last-child {
+    margin-right: 1px;
+  }
+
+  .footer-details {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width:650px) {
+  body {
+    overflow-x: hidden;
+  }
+  .nav-links {
+    position: absolute;
+    box-sizing: border-box;
+    right: 0px;
+    height: 70%;
+    top: 8vh;
+    background-color: #ff98a7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    transform: translateX(100%);
+    transition: transform 0.4s ease-in;
+    padding-bottom: 400px;
+  }
+  .nav-links li {
+    opacity: 0;
+  }
+  .burger {
+    display: block;
+  }
+  .footer-details {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width:430px) {
+  .footer-details li {
+    width: 430px;
+  }
+  .bubble-button {
+    margin-bottom: 14px;
+    width: 60px;
+    height: 60px;
+    position: relative;
+    right: -75%;
+    font-size: 50px;
+    line-height: 62px;
+}
+
+.nav-active {
+  transform: translateX(0%);
+}
+
+@keyframes navLinkFade {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+.open .line1 {
+  transform: rotate(-45deg) translate(-5px,6px);
+}
+.open .line2 {
+  opacity: 0;
+}
+.open .line3 {
+  transform: rotate(45deg) translate(-5px,-6px);
+}

@@ -7,7 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="http://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+  <script defer src="{% static 'js/base.js' %}"></script>
   <script src="https://kit.fontawesome.com/c1618a70f2.js" crossorigin="anonymous"></script>
   <title>ShareFlix</title>
 </head>
@@ -43,6 +44,36 @@
   <main>
     {% block content %}
     {% endblock %}
+
+    <button id="myBtn" class="bubble-button"><i class="fas fa-plus-square"></i></button>
+    <div id="myModal" class="modal">
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close">&times;</span>
+          <h2>Add a Movie!</h2>
+        </div>
+        <div class="modal-body">
+          <form action="" method="post">
+        <!-- Django requires the following for security purposes -->
+            {% csrf_token %}
+            <table>
+            <!-- Render the inputs inside of <tr>s & <td>s -->
+              {{ form.as_table }}
+            </table>
+            <input type="submit" value="SUBMIT" class="btn">        
+          </form>
+          {% if object %}
+          <a href="{% url 'profile_detail' object.profile.id %}">Cancel</a>
+          <a href="{% url 'watchable_delete' object.id %}">Delete</a>
+          {% endif %}  
+        </div>
+        <div class="modal-footer">
+          <h3>Modal Footer</h3>
+        </div>
+      </div>
+    </div>
+        
   </main>
 
 
@@ -63,7 +94,7 @@
       <div class="footer-details">
         <h2>CONNECT WITH US!</h2>
         <li><a href="https://www.linkedin.com/in/zoesiskos/"><i class="fab fa-linkedin"></i>ZOE</a></li>
-        <li><a href="https://github.com/ArdyParty"><i class="fab fa-linkedin"></i>ARDY</a></li>
+        <li><a href="https://www.linkedin.com/in/ardy-kashani/"><i class="fab fa-linkedin"></i>ARDY</a></li>
         <li><a href="https://www.linkedin.com/in/brandon-bernal/"><i class="fab fa-linkedin"></i>BRANDON</a></li>
       </div>
 
@@ -80,8 +111,6 @@
       2020 All rights reserved
     </div>
   </footer>
-
-  <script src="{% static 'js/home.js' %}"></script>
 </body>
 </html>
 
