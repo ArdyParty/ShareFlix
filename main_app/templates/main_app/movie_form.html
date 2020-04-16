@@ -1,17 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
-    <!-- Leaving the action empty makes the form post to the same url used to display it -->
     <form action="" method="post">
-        <!-- Django requires the following for security purposes -->
         {% csrf_token %}
         <table>
-            <!-- Render the inputs inside of <tr>s & <td>s -->
-            {{ form.as_table }}
-            </table>
-            <input type="submit" value="SUBMIT" class="btn">        
-        </form>
-        {% if object %}
+        {{ form.as_table }}
+        </table>
+        <input type="submit" value="SUBMIT" class="btn">        
+    </form>
+    {% if object %}
         <a href="{% url 'profile_detail' object.profile.id %}">Cancel</a>
         <a href="{% url 'watchable_delete' object.id %}">Delete</a>
-        {% endif %}   
+    {% endif %}   
 {% endblock %}
