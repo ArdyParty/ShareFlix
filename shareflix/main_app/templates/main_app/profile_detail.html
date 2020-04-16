@@ -10,9 +10,10 @@
     {{ profile.user.last_name }}</p>
     <p><strong>email: </strong> {{ profile.user.email }}</p>
     <p><strong>Fave Flick: </strong> {{ profile.fave_movie }}</p>
-    {% if profile.user != request.user and profile.user.following != request.user.following %}
+    <p><strong>Fave Quote: </strong> {{ profile.quote }}</p>
+    {% if profile.user != request.user %}
     <a href="{% url 'follow' profile.id %}" class="btn btn-rounded">Follow</a>
-    {% elif profile.user != request.user and profile.user.following == request.user.following %}
+    {% elif profile.user != request.user and profile.user.following.id in request.user.following %}
     <a href="#">Unfollow</a>   
     {% else %}
     
@@ -61,7 +62,7 @@
                 >{{watchable.title}}</a
             >
             </td>
-            <td>{{watchable.where}}</td>
+            <td>{{watchable.recommend}}</td>
         </tr>
         {% endif %} {% endfor %}
         </tbody>
