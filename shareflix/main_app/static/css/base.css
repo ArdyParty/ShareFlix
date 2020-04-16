@@ -80,7 +80,7 @@ nav {
 .bubble-button:hover {
    box-shadow: 0 6px 14px 0 #ff98a7;
    transform: scale(1.25);
-   background-color: linen;
+   background-color: #fff5eb;
    color: #ff98a7;
 }
 
