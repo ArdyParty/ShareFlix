@@ -4,7 +4,8 @@ from . import views
 urlpatterns = [ 
     path('', views.info, name='info'),
     path('home/', views.home, name='home'),
-    path('add/', views.WatchableCreate.as_view(), name='watchable_create' ),
+    path('add/', views.WatchableCreate.as_view(), name='watchable_create'),
+    path('watchable/<int:movie_id>/fork', views.WatchableFork.as_view(), name='watchable_fork' ),
     path('mylist/', views.WatchableList.as_view(), name='watchable_index'),
     path('watchable/<int:pk>/', views.WatchableDetail.as_view(), name='watchable_detail'),
     path('watchable/<int:pk>/update/', views.WatchableUpdate.as_view(), name='watchable_update'),

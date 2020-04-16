@@ -16,4 +16,4 @@ class UserForm(forms.ModelForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['fave_movie']
+        fields = ['fave_movie', 'quote']

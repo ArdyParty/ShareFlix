@@ -1,18 +1,38 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1>Title: {{ movie.title }}</h1>
+    <h1>{{ movie.title }}</h1>
+    <!-- Current user's movie --> 
+    {% if movie.profile == request.user.profile %}
+        <a href="{% url 'watchable_update' movie.id %}">Edit</a>
         {% if movie.watched %}
             <p><strong>How you heard about it:</strong> {{ movie.how_heard}}</p>
             <p><strong>Where to find it:</strong> {{ movie.where }}</p>
             <p><strong>Genre:</strong> {{ movie.genre }}</p>
             <p><strong>Do you recommend it?</strong>: {{ movie.recommend }}</p>
             <p><strong>Why?</strong>: {{ movie.description }}</p>
-            {% else %}
+        {% else %}
             <p><strong>How you heard about it:</strong> {{ movie.how_heard}}</p>
             <p><strong>Where to find it:</strong> {{ movie.where }}</p>
             <p><strong>Why watch it:</strong> {{ movie.description }}</p>
             <p><strong>Genre:</strong> {{ movie.genre }}</p>
             <p><strong>Watched:</strong> Not yet</p>
+    {% endif %}
+
+    <!-- Other users' movie --> 
+    {% else %}
+        <a href="{% url 'watchable_fork' movie.id %}">Add</a>
+        {% if movie.watched %}
+            <p><strong>How they heard about it:</strong> {{ movie.how_heard}}</p>
+            <p><strong>Where to find it:</strong> {{ movie.where }}</p>
+            <p><strong>Genre:</strong> {{ movie.genre }}</p>
+            <p><strong>Do they recommend it?</strong>: {{ movie.recommend }}</p>
+            <p><strong>Why?</strong>: {{ movie.description }}</p>
+        {% else %}
+            <p><strong>How they heard about it:</strong> {{ movie.how_heard}}</p>
+            <p><strong>Where to find it:</strong> {{ movie.where }}</p>
+            <p><strong>Why watch it:</strong> {{ movie.description }}</p>
+            <p><strong>Genre:</strong> {{ movie.genre }}</p>
+            <p><strong>Watched:</strong> Not yet</p>
         {% endif %}
-        <a href="{% url 'watchable_update' movie.id %}">Edit</a>
-{% endblock %}
+    {% endif %}
+{% endblock %}  
