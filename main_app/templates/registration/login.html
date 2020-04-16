@@ -12,7 +12,7 @@
   <div class="container" id="container">
     <div class="form-container sign-up-container">
       <form method="post" action="{% url 'signup' %}">
-        <h1>Create Account</h1>
+        <h2>Create Account</h2>
         <!-- <div class="social-container">
           <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
           <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
@@ -23,20 +23,21 @@
         <p>
           <label for="id_username">Username:</label> 
           <input type="text" name="username" maxlength="150" autocapitalize="none" autocomplete="username" autofocus="" required="" id="id_username"> 
-          <span class="helptext">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</span>
+          <span class="helptext">150 characters or fewer. Letters, digits and @/./+/-/_ only.</span>
         </p>
         <p>
           <label for="id_password1">Password:</label>
-          <input type="password" name="password1" autocomplete="new-password" required="" id="id_password1">     <span class="helptext"></span>
+          <input type="password" name="password1" autocomplete="new-password" required="" id="id_password1">     
+          <span class="helptext"></span>
         </p>
-        <p></p>
         <p>
           <label for="id_password2">Password confirmation:</label> 
-          <input type="password" name="password2" autocomplete="new-password" required="" id="id_password2"> <span class="helptext">Enter the same password as before, for verification.</span>
+          <input type="password" name="password2" autocomplete="new-password" required="" id="id_password2"> <span class="helptext">Same password for verification.</span>
         </p>
           <input type="submit" class="btn" value="signup">
       </form>
     </div>
+
     <div class="form-container sign-in-container">
       <form method="post" action="{% url 'login' %}">
         <h1>Sign in</h1>
@@ -71,17 +72,6 @@
       </div>
     </div>
   </div>
-    
-    <!-- login form -->
-    <!-- <form method="post" action="{% url 'login' %}">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" class="btn" value="login">
-        <input type="hidden" name="next" value="{{ next }}">
-    </form>
-    <a href="{% url 'signup' %}" class="btn btn-rounded">New User?</a> -->
-    
-    
 </body>
 </html>
 
