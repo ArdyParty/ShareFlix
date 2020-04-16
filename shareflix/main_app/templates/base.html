@@ -48,7 +48,7 @@
     <button id="myBtn" class="bubble-button"><i class="fas fa-plus-square"></i></button>
     <div id="myModal" class="modal">
 
-      <div class="modal-content rounded-0">
+      <div class="modal-content">
         <div class="modal-header">
           <span class="close">&times;</span>
           <h2>Add a Movie!</h2>
@@ -63,10 +63,6 @@
             </table>
             <input type="submit" value="SUBMIT" class="btn">        
           </form>
-          {% if object %}
-          <a href="{% url 'profile_detail' object.profile.id %}">Cancel</a>
-          <a href="{% url 'watchable_delete' object.id %}">Delete</a>
-          {% endif %}  
         </div>
         <div class="modal-footer">
           <h3>Modal Footer</h3>
