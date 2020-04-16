@@ -23,11 +23,14 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
     instance.profile.save()
 
 class Following(models.Model):
-    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, verbose_name='Project')
-    follow = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name="follow")
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, verbose_name='profile')
+    follow = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='follow')
 
     def __str__(self):
         return f'{self.profile.user} follows {self.follow.user}'
+
+    class Meta:
+        constraints = [models.UniqueConstraint(fields=['profile', 'follow'], name='unique_following')] # Prevents multiple entires for following someone
 
 class Movie(models.Model):
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE) # 1:M, a profile can have many movies
