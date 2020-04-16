@@ -95,7 +95,7 @@ def follow(req, profile_id):
     f.profile_id = req.user.profile.id
     f.follow_id = profile_id
     f.save()
-    return render(req, 'home.html')
+    return redirect('profile_detail', profile_id)
 
 # def unfollow(req, profile_id):
 #     f = Following()
