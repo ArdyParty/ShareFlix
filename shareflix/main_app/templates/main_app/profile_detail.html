@@ -12,11 +12,7 @@
     <p><strong>Fave Flick: </strong> {{ profile.fave_movie }}</p>
     <p><strong>Fave Quote: </strong> {{ profile.quote }}</p>
     {% if profile.user != request.user %}
-    <a href="{% url 'follow' profile.id %}" class="btn btn-rounded">Follow</a>
-    {% elif profile.user != request.user and profile.user.following.id in request.user.following %}
-    <a href="#">Unfollow</a>   
-    {% else %}
-    
+        <a href="{% url 'follow' profile.id %}" class="btn btn-rounded">Follow</a>
     {% endif %}
 
     <!-- TO SEE LIST OF THEIR MOVIES -->
