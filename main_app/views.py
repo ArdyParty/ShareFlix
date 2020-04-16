@@ -18,7 +18,10 @@ def home(req):
     return render(req, 'home.html')
 
 def info(req):
-    return render(req, 'info.html')
+    if req.user.is_authenticated:
+        return redirect('profile_detail', req.user.profile.id)
+    else:
+        return render(req, 'info.html')
 
 def profile_login(req):
     return redirect('profile_detail', req.user.profile.id)
