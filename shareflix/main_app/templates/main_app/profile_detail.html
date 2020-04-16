@@ -10,7 +10,7 @@
     {{ profile.user.last_name }}</p>
     <p><strong>email: </strong> {{ profile.user.email }}</p>
     <p><strong>Fave Flick: </strong> {{ profile.fave_movie }}</p>
-    <p><strong>Fave Quote: </strong> {{ profile.quote }}</p>
+    <p><strong>Fave Quote: </strong><em>{{ profile.quote }}</em></p>
     {% if profile.user != request.user %}
     <a href="{% url 'follow' profile.id %}" class="btn btn-rounded">Follow</a>
     {% elif profile.user != request.user and profile.user.following.id in request.user.following %}
