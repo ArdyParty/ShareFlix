@@ -55,7 +55,7 @@ class WatchableCreate(LoginRequiredMixin, CreateView):
     
 class WatchableUpdate(LoginRequiredMixin, UpdateView):
     model = Movie
-    fields = ['title', 'how_heard', 'where', 'description', 'genre', 'watched']
+    fields = ['title', 'how_heard', 'where', 'description', 'genre', 'watched', 'recommend', 'private']
 
 class WatchableDelete(LoginRequiredMixin, DeleteView):
     model = Movie
