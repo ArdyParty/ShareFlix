@@ -55,7 +55,8 @@
         </tr>
         </thead>
         <tbody>
-        {% for watchable in profile.movie_set.all %} {% if watchable.watched %}
+        {% for watchable in profile.movie_set.all %} 
+        {% if watchable.watched %}
         <tr>
             <td>
             <a href="{% url 'watchable_detail' watchable.id %}"
