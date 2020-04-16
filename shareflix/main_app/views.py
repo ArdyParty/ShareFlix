@@ -46,11 +46,25 @@ class WatchableCreate(LoginRequiredMixin, CreateView):
     model = Movie
     fields = ['title', 'how_heard', 'where', 'description']
 
-    # def form_valid(self, form):
-    #     form.instance.user = self.request.user  # Assign the currently logged in user(self.request.user) to the current movie instance
-    #     return super().form_valid(form)# Validates and saves the instance to the database
     def form_valid(self, form):
-        form.instance.profile_id = self.request.user.profile.id  # Assign the currently logged in user(self.request.user) to the current movie instance
+        form.instance.profile = self.request.user.profile  # Assign the currently logged in user(self.request.user) to the current movie instance
+        return super().form_valid(form) # Validates and saves the instance to the database
+
+class WatchableFork(LoginRequiredMixin, CreateView):
+    model = Movie
+    fields = ['title', 'how_heard', 'where', 'description']
+
+    def get_initial(self): # Populate the form with data from the movie you are forking
+        movieBeingForked = Movie.objects.get(id=self.kwargs.get('movie_id'))
+        return { 
+            'title': movieBeingForked.title,
+            'how_heard': f'{movieBeingForked.profile.user} on ShareFlix',
+            'where': movieBeingForked.where,
+            'description': movieBeingForked.description,
+            }
+
+    def form_valid(self, form):
+        form.instance.profile = self.request.user.profile  # Assign the currently logged in user(self.request.user) to the current movie instance
         return super().form_valid(form) # Validates and saves the instance to the database
     
 class WatchableUpdate(LoginRequiredMixin, UpdateView):
@@ -93,37 +107,12 @@ def follow(req, profile_id):
 class FollowingList(LoginRequiredMixin, ListView):
     model = Following
 
-# def settings(req):
-#     error_message = ''
-#     #profile = user.profile
-#     if req.method == 'POST':
-#         user_form = UserForm(req.POST)
-#         profile_form = ProfileForm(req.POST)
-#         if user_form.is_valid():
-#             # Get current profile and update with form stuff
-#             # request.userprofile. = settings_form.save()
-#             #user = user_form.save()
-#             #profile = profile_form.save()
-#             return redirect('home')
-#         else:
-#             error_message = 'Invalid Settings'
-#     # A bad POST or a GET request, so render signup.html with an empty form
-#     #user_form = UserForm()
-#     profile_form = ProfileForm()
-#     # context = {'form': form, 'error_message': error_message}
-#     # return render(request, 'home/', context) # FIX route
-#     return render(req, 'main_app/profile_detail.html', {
-#         #'user_form': user_form, 
-#         'profile_form': profile_form,
-#         'error_message': error_message
-#         })
-
 def settings(request):
     user = request.user # Current user
     profile = user.profile # Current user's profile
     if (request.method == 'POST'):
-        user_form = UserForm(request.POST or None, instance=user) # Once you change the instance arg from a new object to an existing one
-        profile_form = ProfileForm(request.POST or None, instance=profile)
+        user_form = UserForm(request.POST, instance=user) # Once you change the instance arg from a new object to an existing one
+        profile_form = ProfileForm(request.POST, instance=profile)
         if profile_form.is_valid() and user_form.is_valid():
             user_update = user_form.save(commit=False)
             profile_update = profile_form.save(commit=False)
