@@ -3,8 +3,8 @@
 <h1>{{ user }}</h1>
 
 <!-- Profile photo -->
-{% if user.profile.photo.profile_photo_url %}
-  <img class="profile-photo" src="{{ user.profile.photo.profile_photo_url}}">
+{% if user.profile.profile_photo_url %}
+  <img class="profile-photo" src="{{ user.profile.profile_photo_url}}">
   {% else %}
   <div class="profile-photo-empty">Upload a profile photo</div>
 {% endif %}
