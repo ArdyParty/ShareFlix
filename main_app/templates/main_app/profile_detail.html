@@ -12,7 +12,6 @@
     
 
 
-    
 
     
   <figure class="snip0057 red hover">
@@ -57,4 +56,24 @@
 
 
 
+
+    <!-- Current user's page --> 
+    {% if profile.user == user %}
+        <!-- Profile photo -->
+        {% if profile.profile_photo_url %}
+            <img class="profile-photo" src="{{ profile.profile_photo_url}}">
+        {% else %}
+            <div class="profile-photo-empty">Upload a profile photo</div>
+        {% endif %}
+
+     <!-- Not current user's page -->    
+    {% else %}
+        <!-- Profile photo -->
+        {% if profile.profile_photo_url %}
+            <img class="profile-photo" src="{{ profile.profile_photo_url}}">
+        {% else %}
+            <div class="profile-photo-empty">Upload a profile photo</div>
+        {% endif %}
+
+    {% endif %}
 {% endblock %}

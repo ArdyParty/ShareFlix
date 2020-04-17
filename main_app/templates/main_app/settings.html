@@ -1,10 +1,32 @@
 {% extends 'base.html' %} 
 {% block content %}
 <h1>{{ user }}</h1>
+
+<!-- Profile photo -->
+{% if user.profile.profile_photo_url %}
+  <img class="profile-photo" src="{{ user.profile.profile_photo_url}}">
+  {% else %}
+  <div class="profile-photo-empty">Upload a profile photo</div>
+{% endif %}
+
+<form action="{% url 'profile_photo_add' %}" enctype="multipart/form-data" method="POST">
+  {% csrf_token %}
+  <input type="file" name="photo-file">
+
+  <input type="submit" value="Upload Photo">
+</form>
+
 <form action="" method="POST">
   {% csrf_token %} {{ user_form.as_p }} {{ profile_form.as_p }}
-  <input type="submit" value="SUBMIT" class="btn" />
-  <a href="{% url 'logout' %}" class="btn btn-rounded">Logout</a>
-  <a href="{% url 'profile_detail' user.profile.id %}">Cancel</a>
+  <input type="submit" value="Submit" class="button" />
 </form>
+
+<form action="{% url 'logout' %}" enctype="multipart/form-data">
+  <input type="submit" value="Logout">
+</form>
+
+<form action="{% url 'profile_detail' user.profile.id %}">
+  <input type="submit" value="Cancel">
+</form>
+
 {% endblock %}

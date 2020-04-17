@@ -23,5 +23,3 @@ admin.site.register(Profile)
 admin.site.unregister(User)
 admin.site.register(User, CustomUserAdmin)
 admin.site.register(Following)
-
-# https://simpleisbetterthancomplex.com/tutorial/2016/11/23/how-to-add-user-profile-to-django-admin.html

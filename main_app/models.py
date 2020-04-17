@@ -6,9 +6,10 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
-    fave_movie = models.CharField(max_length=100, default='', blank=True, verbose_name='Favourite Movie')
-    quote = models.TextField(max_length=1000, default='', blank=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
+    fave_movie = models.CharField(max_length=100, default='', blank=True, verbose_name='Favourite movie')
+    quote = models.TextField(max_length=1000, default='', blank=True, verbose_name='Favourite movie/show quote')
+    profile_photo_url = models.CharField(max_length=200, default='', blank=True, verbose_name='Profile photo URL')
 
     def get_absolute_url(self):
         return reverse('profile_detail', kwargs={'pk': self.id})
