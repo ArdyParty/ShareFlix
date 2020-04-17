@@ -1,13 +1,15 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
-from .models import Movie, Profile, Following
+from .models import Movie, Profile, Following, Photo
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm # NOTE: Currently not using UserChangeForm
 from .forms import UserForm, ProfileForm
+import uuid
+import boto3
 
 
 
@@ -129,4 +131,30 @@ def settings(request):
     profile_form = ProfileForm(instance=profile)
     context = {'user_form': user_form,'profile_form': profile_form,}
     return render(request, 'main_app/settings.html', context)
+
+S3_BASE_URL = 'https://s3.us-east-2.amazonaws.com/'
+BUCKET= 'shareflix'
+
+@login_required
+def profile_photo_add(request):
+    # photo-file will be the "name" attribute on the <input type="file">
+    photo_file = request.FILES.get('photo-file', None)
+    if photo_file:
+        s3 = boto3.client('s3')
+        # Need a unique "key" for S3 / needs image file extension too
+        # Create 6 random characters and then attach the file name without the file extension
+        key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
+        # Alternatively could make your key a path
+        # This creates uniqe folder names with your photo inside
+        # key = uuid.uuid4().hex[:6] + '/' + photo_file.name
+        try:
+            s3.upload_fileobj(photo_file, BUCKET, key)
+            # Build the full url string (needs to be unique to avoid overwriting existing files)
+            url = f"{S3_BASE_URL}{BUCKET}/{key}"
+            photo = Photo(profile_photo_url=url, profile_id=request.user.profile.id)
+            photo.save()
+        except Exception as e:
+            print(e)
+            print('An error occurred uploading file to S3')
+    return redirect('settings')
 

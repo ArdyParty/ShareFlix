@@ -17,6 +17,7 @@ urlpatterns = [
     path('profile/<int:profile_id>/follow/', views.follow, name='follow'),
     path('profile/<int:pk>/following/', views.FollowingList.as_view(), name='following'),
     path('settings/', views.settings, name='settings'),
+    path('settings/profilephoto/add', views.profile_photo_add, name='profile_photo_add'),
 ]
 
 # Built in URLs for django.contrib.auth.urls

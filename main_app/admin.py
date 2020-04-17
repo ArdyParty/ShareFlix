@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Movie, Profile, Following
+from .models import Movie, Profile, Following, Photo
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
 
@@ -23,5 +23,7 @@ admin.site.register(Profile)
 admin.site.unregister(User)
 admin.site.register(User, CustomUserAdmin)
 admin.site.register(Following)
+admin.site.register(Photo)
+
 
 # https://simpleisbetterthancomplex.com/tutorial/2016/11/23/how-to-add-user-profile-to-django-admin.html
