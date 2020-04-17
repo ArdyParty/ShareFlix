@@ -1,4 +1,5 @@
 {% extends 'base.html' %} 
+{% load static %}
 {% block content %}
 
     <!-- settings in profile -->
@@ -25,7 +26,12 @@
       <h5 class="username"><span>Fave Film:</span> {{ profile.fave_movie }}</h5>
       <div id="quote" class="username">"{{ profile.quote }}"</div>
     </figcaption>
-    <div class="image"><img src="../../static/images/profile.jpg" alt="sample4"/></div>
+    <!-- Profile Photo-->
+    {% if profile.profile_photo_url %}
+      <div class="image"><img src="{{ profile.profile_photo_url}}" alt="profilephoto"></div>
+    {% else %}
+      <div class="image"><img src="{% static 'images/generic-profile.png'%}"></div>
+    {% endif %}
     {% if profile.user == request.user %}
       <div class="watchlist-position">
         <div>My WatchList</div>
@@ -53,27 +59,4 @@
         {% endfor %}
       </div>
   </figure>
-
-
-
-
-    <!-- Current user's page --> 
-    {% if profile.user == user %}
-        <!-- Profile photo -->
-        {% if profile.profile_photo_url %}
-            <img class="profile-photo" src="{{ profile.profile_photo_url}}">
-        {% else %}
-            <div class="profile-photo-empty">Upload a profile photo</div>
-        {% endif %}
-
-     <!-- Not current user's page -->    
-    {% else %}
-        <!-- Profile photo -->
-        {% if profile.profile_photo_url %}
-            <img class="profile-photo" src="{{ profile.profile_photo_url}}">
-        {% else %}
-            <div class="profile-photo-empty">Upload a profile photo</div>
-        {% endif %}
-
-    {% endif %}
 {% endblock %}
