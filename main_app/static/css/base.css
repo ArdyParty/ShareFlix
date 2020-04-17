@@ -164,10 +164,6 @@ main {
   color: linen;
 }
 
-th {
-  color: #ff98a7;
-}
-
 /* Add Animation */
 
 
@@ -327,7 +323,7 @@ th {
 
 @media screen and (max-height: 850px) {
   .nav-links {
-    padding-bottom: 450px;
+    padding-bottom: 350px;
     height: 100%;
   }
 }
