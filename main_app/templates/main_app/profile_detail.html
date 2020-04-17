@@ -1,73 +1,60 @@
 {% extends 'base.html' %} 
 {% block content %}
-    <h1>{{ profile.user }}</h1>
-        {% if profile.user == request.user %}
-        <form action="{% url 'settings' %}" method="get">
+
+    <!-- settings in profile -->
+
+      <!-- {% if profile.user == request.user %} -->
+
+      <!-- <form action="{% url 'settings' %}" method="get">
         <input type="submit" class="btn" value="Settings" />
-        </form>
-        {% endif %}
-    <p><strong>Name: </strong> {{ profile.user.first_name }} 
-    {{ profile.user.last_name }}</p>
-    <p><strong>email: </strong> {{ profile.user.email }}</p>
-    <p><strong>Fave Flick: </strong> {{ profile.fave_movie }}</p>
-    <p><strong>Fave Quote: </strong><em>{{ profile.quote }}</em></p>
+      </form> -->
+      <!-- {% endif %} -->
     
+
+
+    
+
+    
+  <figure class="snip0057 red hover">
+    <div class="user-block"><h2 class="username">{{ profile.user }}</h2></div>
+    <figcaption>
+      <h4 class="name">{{ profile.user.first_name }} {{ profile.user.last_name }}</h4>
     <!-- FOLLOW BUTTON CHANGES BASED ON USER -->
-    {% if profile.user != request.user %}
-        <a href="{% url 'follow' profile.id %}" class="btn btn-rounded">Follow</a>
-    {% endif %}
-
-    
-
-    <!-- TO SEE LIST OF TO WATCH, PRIVATE -->
+      {% if profile.user != request.user %}
+        <a href="{% url 'follow' profile.id %}"><i class="fas fa-user-friends"></i></a>
+      {% endif %}
+      <h5 class="username"><span>Fave Film:</span> {{ profile.fave_movie }}</h5>
+      <div id="quote" class="username">"{{ profile.quote }}"</div>
+    </figcaption>
+    <div class="image"><img src="../../static/images/profile.jpg" alt="sample4"/></div>
     {% if profile.user == request.user %}
-    <div class="col s6">
-    <table class="striped">
-        <h2>My WatchList</h2>
-        <thead>
-        <tr>
-            <th>Title</th>
-            <th>Where to Watch</th>
-        </tr>
-        </thead>
-        <tbody>
+      <div class="watchlist-position">
+        <div>My WatchList</div>
         {% for watchable in profile.movie_set.all %} 
-        {% if not watchable.watched %}
-        <tr>
-            <td>
-            <a href="{% url 'watchable_detail' watchable.id %}"
-                >{{watchable.title}}</a
-            >
-            </td>
-            <td>{{watchable.where}}</td>
-        </tr>
+          {% if not watchable.watched %}
+          <div class="watchlist-div">
+            <div class="watchlist-title"><a href="{% url 'watchable_detail' watchable.id %}">{{watchable.title}}</a></div>
+            <div class="watchlist-where"><p> {{watchable.where}}</p></div>
+          </div>
+          {% endif %} 
+          {% endfor %}
+      {% endif %}
+      </div>
+  </figure>
+  <figure>
+    <div class="recommended-position">
+        <div>My Recommendations</div>
+          {% for watchable in profile.movie_set.all %} 
+          {% if watchable.watched %}
+          <div class="recommended-title"><a href="{% url 'watchable_detail' watchable.id %}">{{watchable.title}}</a></div>
+          {% if watchable.recommend %}
+          <div class="recommended-description"><p>{{watchable.description}}</p></div>
+          {% endif %}
         {% endif %} 
         {% endfor %}
-        </tbody>
-    </table>
-    {% endif %}
-    <!-- DISPLAYS LIST OF WATCHED ITEMS AND RECOMMENDATINS -->
-    <table class="striped">
-        <h2>My Recommendations</h2>
-        <thead>
-        <tr>
-            <th>Title</th>
-            <th>Do I recommend this?</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for watchable in profile.movie_set.all %} 
-        {% if watchable.watched %}
-        <tr>
-            <td>
-            <a href="{% url 'watchable_detail' watchable.id %}"
-                >{{watchable.title}}</a
-            >
-            </td>
-            <td>{{watchable.recommend}}</td>
-        </tr>
-        {% endif %} {% endfor %}
-        </tbody>
-    </table>
-    </div>
+      </div>
+  </figure>
+
+
+
 {% endblock %}
