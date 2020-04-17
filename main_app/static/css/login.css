@@ -59,7 +59,7 @@ input {
   border-radius: 20px;
   border: 1px solid #FF4B2B;
   background-color: #FF4B2B;
-  color: #FFFFFF;
+  color: #ff98a7;
   font-size: 12px;
   font-weight: bold;
   padding: 12px 45px;
@@ -213,7 +213,7 @@ input {
 }
 
 .container {
-  background-color: #fff;
+  background-color: rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   box-shadow: 40px 40px 50px rgba(0, 0, 0, 0.5), 40px 40px 50px rgba(0, 0, 0, 0.5);
   position: relative;
