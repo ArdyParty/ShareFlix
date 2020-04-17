@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
-from .models import Movie, Profile, Following, Photo
+from .models import Movie, Profile, Following
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -150,9 +150,8 @@ def profile_photo_add(request):
         try:
             s3.upload_fileobj(photo_file, BUCKET, key)
             # Build the full url string (needs to be unique to avoid overwriting existing files)
-            url = f"{S3_BASE_URL}{BUCKET}/{key}"
-            photo = Photo(profile_photo_url=url, profile_id=request.user.profile.id)
-            photo.save()
+            request.user.profile.profile_photo_url = f"{S3_BASE_URL}{BUCKET}/{key}"
+            request.user.profile.save()
         except Exception as e:
             print(e)
             print('An error occurred uploading file to S3')
