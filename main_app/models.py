@@ -52,3 +52,10 @@ class Movie(models.Model):
 
     class Meta:
         ordering = ['-date'] # Sort from most most recent to old
+
+class Photo(models.Model):
+    profile = models.OneToOneField(Profile, on_delete=models.CASCADE)
+    profile_photo_url = models.CharField(max_length=200)
+
+    def __str__(self):
+        return f"{self.profile.user}\'s profile photo"
