@@ -17,24 +17,20 @@ To view the full pitch, which includes more market research and the user stories
 ## Using the app
 The app is designed for mobile but can also be used on a desktop.
 
----
 ![landing page](https://i.imgur.com/W7OMUxi.png) 
 
-----
 Login             |  Sign up
 :-------------------------:|:-------------------------:
 ![add an item](https://i.imgur.com/9TdFzH1.png) |  ![signup](https://i.imgur.com/sfGz1kQ.png)
 
----
 Add an item             |  Edit an item
 :-------------------------:|:-------------------------:
 ![add an item](https://i.imgur.com/9TdFzH1.png) | ![edit](https://i.imgur.com/JXZR3WQ.png)
 
 
-----
-User's profile page             |  Other's profile page
+User's profile page             |  Other profile page
 :-------------------------:|:-------------------------:
-![profile page](https://i.imgur.com/3knQEvv.png) | ![profile page](https://i.imgur.com/3knQEvv.png)
+![profile page](https://i.imgur.com/3knQEvv.png) | ![other profile page](https://i.imgur.com/WCTGTi5.png)
 ----
 
 ## Technologies Used
