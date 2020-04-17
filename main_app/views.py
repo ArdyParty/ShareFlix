@@ -20,27 +20,29 @@ def home(req):
     return render(req, 'home.html')
 
 def info(req):
-    if req.user.is_authenticated:
-        return redirect('profile_detail', req.user.profile.id)
-    else:
-        return render(req, 'info.html')
+    return render(req, 'info.html')
 
 def profile_login(req):
     return redirect('profile_detail', req.user.profile.id)
 
 def signup(req):
-    if req.user.is_authenticated:
-        return redirect('profile_detail', req.user.profile.id)
-    else:
-        #error_message = ''
-        if req.method == 'POST':
-            # This is how to create a 'user' form object that includes the data from the browser
-            form = UserCreationForm(req.POST)
-            if form.is_valid():
-                user = form.save() # Add the user to the database
-                login(req, user) # Log a user in via code
-                return redirect('home')
-        return redirect('login') # redirect to login page
+    #error_message = ''
+    if req.method == 'POST':
+        print('Foo')
+        # This is how to create a 'user' form object that includes the data from the browser
+        form = UserCreationForm(req.POST)
+        if form.is_valid():
+            user = form.save() # Add the user to the database
+            login(req, user) # Log a user in via code
+            return redirect('home')
+    #     else:
+    #         error_message = 'Invalid sign up - try again'
+    # # A bad POST or a GET request, so render signup.html with an empty form
+    # form = UserCreationForm()
+    # context = {'form': form, 'error_message': error_message}
+    # return render(req, 'registration/signup.html', context) # redirect to login page
+    print('bar')
+    return redirect('login') # redirect to login page
 
 class WatchableCreate(LoginRequiredMixin, CreateView):
     model = Movie
@@ -85,16 +87,11 @@ class WatchableDetail(LoginRequiredMixin, DetailView):
 class ProfileDetail(LoginRequiredMixin, DetailView):
     model = Profile
 
-    def check_user(self):
-        if self.is_authenticated:
-            print(foo)
-
 class ProfileUpdate(LoginRequiredMixin, UpdateView):
     model = Profile
     fields = '__all__'
     # fields = [ 'username', 'first_name', 'last_name','email']
 
-@login_required
 def follow(req, profile_id):
     f = Following()
     f.profile_id = req.user.profile.id
@@ -112,7 +109,6 @@ def follow(req, profile_id):
 class FollowingList(LoginRequiredMixin, ListView):
     model = Following
 
-@login_required
 def settings(request):
     user = request.user # Current user
     profile = user.profile # Current user's profile

@@ -51,7 +51,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <span class="close">&times;</span>
-          <h2>Add to My WatchList</h2>
+          <h2>Add a Movie!</h2>
         </div>
         <div class="modal-body">
           <form action="{% url 'watchable_create' %}" method="post">
@@ -77,7 +77,7 @@
                   </td>
                 </tr>
                 <tr>
-                  <th><label for="id_description">Why watch it:</label></th>
+                  <th><label for="id_description">Description:</label></th>
                   <td>
                     <textarea name="description" cols="40" rows="10" maxlength="1000" id="id_description"></textarea>
                   </td>
