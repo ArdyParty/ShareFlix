@@ -797,3 +797,19 @@ figure .recommended-position .recommended-description {
 .open .line3 {
   transform: rotate(45deg) translate(-5px,-6px);
 }
+
+.profile-photo {
+  clip-path: circle();
+  max-width: 100px;
+  height: auto;
+}
+
+.profile-photo-empty {
+  background-color: rgba(0, 0, 0, 0.150);
+  border-radius: 100%;
+  width: 100px;
+  height: 100px;
+  font-size: 10px;
+  text-align: center;
+  padding: 50px 0;
+}
