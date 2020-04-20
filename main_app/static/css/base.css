@@ -61,7 +61,7 @@ nav {
 main {
   background-color: linen;
   color : rgba(255, 56, 85, 0.7);
-  max-width: 780px;
+  min-width: 440px;
 }
 
 /*MODAL BUTTON*/
