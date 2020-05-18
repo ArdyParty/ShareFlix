@@ -32,6 +32,8 @@
 //   });
 // }
 
+console.log('hello');
+
 const tabs = document.querySelectorAll('[data-tab-target]');
 const tabContents = document.querySelectorAll('[data-tab-content]');
 console.log(document.querySelectorAll('[data-tab-content]'));
@@ -42,12 +44,10 @@ tabs.forEach(tab => {
       tabContent.classList.remove('active')
     })
     document.querySelector(`#${evt.target.getAttribute('data-tab-target')}`).classList.add('active');
-    // console.log(tabContents);
-    // evt.target.classList.add('active')
+    console.log(tabContents);
+    evt.target.classList.add('active')
   })
 })
-
-
 
 
 
