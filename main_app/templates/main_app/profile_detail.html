@@ -21,7 +21,17 @@
       <h4 class="name">{{ profile.user.first_name }} {{ profile.user.last_name }}</h4>
     <!-- FOLLOW BUTTON CHANGES BASED ON USER -->
       {% if profile.user != request.user %}
-        <a href="{% url 'follow' profile.id %}"><i class="fas fa-user-friends"></i></a>
+        {% if followingExists %}
+          <a href="{% url 'toggle_follow' profile.id %}">
+            Unfollow
+            <i class="fas fa-user-friends"></i>
+          </a>
+        {% else %}
+          <a href="{% url 'toggle_follow' profile.id %}">
+            Follow
+            <i class="fas fa-user-friends"></i>
+          </a>
+        {% endif %}
       {% endif %}
       <h5 class="username"><span>Fave Film:</span> {{ profile.fave_movie }}</h5>
       <div id="quote" class="username">"{{ profile.quote }}"</div>
