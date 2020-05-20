@@ -36,8 +36,8 @@ img {
   width: 100%;
   height: 100%;
   z-index: 1;
-  background: rgba(0,0,0, 0.4);
-  box-shadow: inset 10px 0px 250px #ff98a7, inset -10px -80px 250px #ff98a7;
+  background: rgba(0,0,0, 0.6);
+  box-shadow: inset 10px 0px 200px #ff98a7, inset -10px -80px 200px #ff98a7;
 }
 
 .showcase-top {
@@ -49,7 +49,7 @@ img {
 .showcase-top .logo {
   letter-spacing: 5px;
   margin-left: 20px;
-  width: 400px;
+  width: auto;
   position: absolute;
   top: 50%;
   left: 20%;
@@ -81,7 +81,7 @@ img {
   font-size: 90px;
   line-height: 1.1;
   margin: 0 0 32px;
-  width: 900px;
+  width: auto;
 }
 
 .showcase-content p {
@@ -141,7 +141,7 @@ img {
   color: #fff;
   cursor: pointer;
   border-bottom: linen 4px solid;
-  color: rgba(250, 151, 165, 1);
+  color: rgba(250, 151, 165, 0.7);
 }
 
 .tab-border {
@@ -281,7 +281,7 @@ img {
   .showcase-content h1 {
     font-size: 50px;
     line-height: 1;
-    width: 500px;
+    width: auto;
   }
 
   .showcase-content p {
@@ -365,14 +365,23 @@ img {
 }
 
 @media(max-width: 600px) {
+  .showcase-top .logo, a {
+    margin: 0;
+    padding: 2px 4px;
+  }
+
+  .tabs .container {
+    display: block;
+  }
+
   .tabs i {
-    font-size: 20px;
-    padding-top: 2px;
+    font-size: 60px;
+    padding-top: 20px;
     font-weight: 900;
   }
 
   .tabs p {
-    font-size: 18px;
+    font-size: 40px;
     display: block;
     font-weight: bold;
     letter-spacing: 0.5px;
@@ -382,22 +391,32 @@ img {
 
   .tabs .container > div {
     padding-top: 8px;
+    margin-top: 2px;
   }
 
   #tab-2, #tab-1 {
-    height: 80px;
     background-size: 120%;
+    height: 160px;
   }
 
   #tab-3 {
-    height: 80px;
+    height: 160px;
     background-size: 100%;
+    background-position: bottom 50% top 0;
+  }
+
+  .showcase-top .logo {
+    left: 0;
+  }
+
+  .showcase-top a {
+    right: -40px;
   }
 }
 
 @media(max-height: 600px) {
   .showcase-content {
-    margin-top: 48px;
+    margin-top: 26px;
   }
 }
 
