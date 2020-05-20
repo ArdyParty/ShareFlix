@@ -92,15 +92,8 @@ class ProfileDetail(LoginRequiredMixin, DetailView):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
         # https://stackoverflow.com/questions/639836/what-is-the-right-way-to-validate-if-an-object-exists-in-a-django-view-without-r
-        # Use filter() and exists() instead of get() to avoid exception when the specified pk does not exist
         if self.request.user.profile.following_set.filter(follow_id=self.kwargs['pk']).exists():
             context['followingExists'] = True
-
-        # Instead of exists(), could use get() within a try/except
-        # try:
-        #     context['followingExists'] = True if self.request.user.profile.following_set.get(follow_id=self.kwargs['pk']) else False
-        # except Exception as e:
-        #     print(e)
         return context
 
 class ProfileUpdate(LoginRequiredMixin, UpdateView):
@@ -109,22 +102,15 @@ class ProfileUpdate(LoginRequiredMixin, UpdateView):
     # fields = [ 'username', 'first_name', 'last_name','email']
 
 def toggleFollow(req, profile_id):
-    following = Following.objects.filter(follow_id=profile_id)
+    following = Following.objects.filter(follow_id=profile_id) # Use filter() instead of get() to avoid DoesNotExist exception
     if following:
         following.delete()
     else:
-        f = Following()
-        f.profile_id = req.user.profile.id
-        f.follow_id = profile_id
-        f.save()
+        following = Following()
+        following.profile_id = req.user.profile.id
+        following.follow_id = profile_id
+        following.save()
     return redirect('profile_detail', profile_id)
-
-# def unfollow(req, profile_id):
-#     f = Following()
-#     f.profile_id = req.user.profile.id
-#     f.follow_id = profile_id
-#     f.save()
-#     return render(req, 'home.html')
 
 class FollowingList(LoginRequiredMixin, ListView):
     model = Following
