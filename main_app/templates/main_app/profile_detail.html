@@ -22,12 +22,12 @@
     <!-- FOLLOW BUTTON CHANGES BASED ON USER -->
       {% if profile.user != request.user %}
         {% if followingExists %}
-          <a href="{% url 'follow' profile.id %}">
+          <a href="{% url 'toggle_follow' profile.id %}">
             Unfollow
             <i class="fas fa-user-friends"></i>
           </a>
         {% else %}
-          <a href="{% url 'follow' profile.id %}">
+          <a href="{% url 'toggle_follow' profile.id %}">
             Follow
             <i class="fas fa-user-friends"></i>
           </a>

@@ -92,6 +92,7 @@ class ProfileDetail(LoginRequiredMixin, DetailView):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
         # https://stackoverflow.com/questions/639836/what-is-the-right-way-to-validate-if-an-object-exists-in-a-django-view-without-r
+        # Use filter() and exists() instead of get() to avoid exception when the specified pk does not exist
         if self.request.user.profile.following_set.filter(follow_id=self.kwargs['pk']).exists():
             context['followingExists'] = True
 
@@ -107,11 +108,15 @@ class ProfileUpdate(LoginRequiredMixin, UpdateView):
     fields = '__all__'
     # fields = [ 'username', 'first_name', 'last_name','email']
 
-def follow(req, profile_id):
-    f = Following()
-    f.profile_id = req.user.profile.id
-    f.follow_id = profile_id
-    f.save()
+def toggleFollow(req, profile_id):
+    following = Following.objects.filter(follow_id=profile_id)
+    if following:
+        following.delete()
+    else:
+        f = Following()
+        f.profile_id = req.user.profile.id
+        f.follow_id = profile_id
+        f.save()
     return redirect('profile_detail', profile_id)
 
 # def unfollow(req, profile_id):
