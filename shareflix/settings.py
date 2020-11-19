@@ -30,6 +30,13 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+#FOR REACT
+#REST_FRAMEWORK = {
+#    'DEFAULT_RENDERER_CLASSES': (
+#       'rest_framework.renderers.JSONRenderer',
+#    )
+#}
+
 INSTALLED_APPS = [
     'main_app',
     'django.contrib.admin',
@@ -38,7 +45,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-]
+    'rest_framework', #FOR REACT
+    'frontend', #FOR REACT
+ ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

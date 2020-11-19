@@ -11,6 +11,17 @@ from .forms import UserForm, ProfileForm
 import uuid
 import boto3
 
+# FOR REACT
+from .serializers import MovieSerializer, ProfileSerializer
+from rest_framework import generics
+
+class MovieListCreate(generics.ListCreateAPIView):
+    queryset = Movie.objects.all()
+    serializer_class = MovieSerializer
+
+class ProfileListCreate(generics.ListCreateAPIView):
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer
 
 
 # Create your views here.
