@@ -4,11 +4,15 @@ function navSlide() {
   const navLinks = document.querySelectorAll('.nav-links li');
   
   
+  document.addEventListener('animationstart', function (e) {
+    if (e.animationName === 'fade-in') {
+        e.target.classList.add('did-fade-in');
+    }
+  });
+  
   burger.addEventListener('click', ()=> {
     //toggle Nav
     nav.classList.toggle('nav-active');
-
-
     //animate links
     navLinks.forEach((link, index)=> {
       if(link.style.animation) {
@@ -25,15 +29,6 @@ function navSlide() {
 navSlide();
 
 
-// function modal() {
-//   const buttonEl = document.getElementById('btn-1');
-
-//   buttonEl.addEventListener('click', ()=> {
-//     buttonEl.style
-//   });
-// }
-
-// modal();
 
 // Get the modal
 const modal = document.querySelector("#myModal");
