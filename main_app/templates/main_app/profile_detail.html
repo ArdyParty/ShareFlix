@@ -10,14 +10,10 @@
         <input type="submit" class="btn" value="Settings" />
       </form> -->
       <!-- {% endif %} -->
-    
-
-
-
-    
+   
   <figure class="snip0057 red hover">
     <figcaption>
-      <h4 class="name">{{ profile.user.first_name }} {{ profile.user.last_name }}</h4>
+      <h4 class="name">{{ profile.user }}</h4>
     <!-- FOLLOW BUTTON CHANGES BASED ON USER -->
       {% if profile.user != request.user %}
         {% if followingExists %}
@@ -55,6 +51,7 @@
       {% endif %}
       </div>
   </figure>
+  
   <figure>
     <div class="recommended-position">
         <div>My Recommendations</div>

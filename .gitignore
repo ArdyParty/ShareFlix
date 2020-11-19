@@ -97,6 +97,7 @@ tags
 # Env #
 #######
 .env
+env
 
 # Python #
 #######
