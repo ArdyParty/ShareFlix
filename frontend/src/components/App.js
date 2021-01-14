@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
-
+import Movie from './Movie/Movie';
 
 class App extends Component {
   constructor(props) {
@@ -34,15 +34,16 @@ class App extends Component {
 
   render() {
     return (
-      <ul>
-        {this.state.data.map(movie => {
-          return (
-            <li key={movie.id}>
-              {movie.title} - {contact.profile}
-            </li>
-          );
-        })}
-      </ul>
+      <div>
+        <ul>
+          {this.state.data.map(movie => 
+            <Movie
+              key={movie.id}
+              movie={movie}
+            />
+          )}
+        </ul>
+      </div>
     );
   }
 }
