@@ -98,6 +98,7 @@ tags
 #######
 .env
 env
+venv
 
 # Python #
 #######
