@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
+import { BrowserRouter, Route, Link, Switch } from "react-router-dom";
 import Movie from './Movie/Movie';
+import MovieDetail from "./MovieDetail/MovieDetail";
 
 class App extends Component {
   constructor(props) {
@@ -34,16 +36,35 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <ul>
-          {this.state.data.map(movie => 
-            <Movie
-              key={movie.id}
-              movie={movie}
-            />
-          )}
-        </ul>
-      </div>
+      <BrowserRouter>
+        <div>
+          <Switch>
+            <Route
+              exact path="/"
+            >
+              <ul>
+                {this.state.data.map(movie => 
+                  <Movie
+                    key={movie.id}
+                    movie={movie}
+                  />
+                )}
+              </ul>
+            </Route>
+            <Route
+              path="/movie/:movieId"
+              // component={MovieDetail}
+              render={(props) => (
+                <MovieDetail
+                  {...props}
+                  movies={this.state.data}
+                />
+              )}
+            >
+            </Route>
+          </Switch>
+        </div>
+      </BrowserRouter>
     );
   }
 }
