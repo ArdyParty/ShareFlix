@@ -39,7 +39,7 @@ sqlparse==0.3.1
 traitlets==4.3.3
 typed-ast==1.4.1
 ujson==1.35
-urllib3==1.25.8
+urllib3==1.26.5
 wcwidth==0.1.9
 whitenoise==5.0.1
 wrapt==1.11.2
